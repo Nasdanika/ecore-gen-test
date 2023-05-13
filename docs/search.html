@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="EN">
+  <head>
+    <title>Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cerulean/bootstrap.min.css" id="nsd-bootstrap-theme-stylesheet"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/model/app.gen/web-resources/css/app.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jstree@3.3.11/dist/themes/default/style.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.1.0/github-markdown.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/styles/default.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.21.2/dist/bootstrap-vue.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/model/app.gen/web-resources/js/common.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/model/app.gen/web-resources/js/dark-head.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jstree@3.3.11/dist/jstree.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.21.2/dist/bootstrap-vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/model/app.gen/web-resources/js/components/table.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="file:///C:/Users/Pavel/git/html/ecore.gen/web-resources/components/table.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid nsd-app-container">
+      <div class="row">
+        <div class="col nsd-app-header">
+          <a href="https://www.nasdanika.org" data-nsd-label-uuid="abf6e1e0-7e34-4836-9f3b-79265682886e" class="nsd-app-header-title">
+            <img src="https://docs.nasdanika.org/images/nasdanika-logo.png" class="nsd-app-label-icon"/>Nasdanika</a>
+          <ul class="nav nsd-app-header-navs">
+            <li class="nav-item"><span data-nsd-label-uuid="25f136d0-50c9-430f-b035-4152f14c8aeb" class="navbar-text"><span class="fas fa-search nsd-app-label-icon"></span>Search</span>
+            </li>
+            <li class="nav-item">
+              <a href="glossary.html" data-nsd-label-uuid="bb4546f9-a5ef-42e5-91fd-c36b4253281f" class="nav-link"><span class="fas fa-book nsd-app-label-icon"></span>Glossary</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col nsd-app-navbar">
+          <ul class="navbar navbar-light navbar-expand-lg">
+            <a href="index.html" data-nsd-label-uuid="48363624-6cc7-4598-bc56-4f0915cd0b37" class="navbar-brand"><span class="fa fa-book nsd-app-label-icon"></span>Test Models Documentation</a>
+            <button type="button" data-toggle="collapse" data-target="#nsd_35" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="nsd_35" class="collapse navbar-collapse"></div>
+          </ul>
+        </div>
+      </div>
+      <div class="row nsd-app-content-row">
+        <div class="col nsd-app-navigation-panel">
+          <div class="card">
+            <div class="card-header">
+              <a href="test/index.html">
+                <img src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EPackage.gif" class="nsd-app-label-icon"/>test</a>
+            </div>
+            <div class="list-group list-group-flush">
+              <a href="test/references/eClassifiers/Animal/index.html" data-nsd-label-uuid="3b8899af-7b37-4b9a-a958-8b9bb70e0dae" class="list-group-item list-group-action">
+                <img src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>Animal</a>
+              <a href="test/references/eClassifiers/Color/index.html" data-nsd-label-uuid="d02aef47-3fc9-4fb8-b779-423d1d6bd106" class="list-group-item list-group-action">
+                <img src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EEnum.gif" class="nsd-app-label-icon"/>Color</a>
+              <a href="test/references/eClassifiers/Food/index.html" data-nsd-label-uuid="76337f1e-7a9a-4b37-9435-ef0da045278d" class="list-group-item list-group-action">
+                <img src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>Food</a>
+              <a href="test/references/eClassifiers/Fox/index.html" data-nsd-label-uuid="2cbf6200-4c7c-49b2-beb6-a1b84ce1838c" class="list-group-item list-group-action">
+                <img src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>Fox</a>
+              <a href="test/references/eClassifiers/Grass/index.html" data-nsd-label-uuid="f1b33fbd-ce22-49f6-9eb6-6f10594821d7" class="list-group-item list-group-action">
+                <img src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>Grass</a>
+              <a href="test/references/eClassifiers/Hare/index.html" data-nsd-label-uuid="e0ce2851-eb97-4a65-a92b-01b1fa1d7e32" class="list-group-item list-group-action">
+                <img src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>Hare</a>
+              <a href="test/references/eClassifiers/LivingBeing/index.html" data-nsd-label-uuid="ce5286c2-9734-4cf2-a15e-ff08d63775d6" class="list-group-item list-group-action">
+                <img src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>LivingBeing</a>
+              <a href="test/references/eClassifiers/Plant/index.html" data-nsd-label-uuid="f14079ee-64ba-467c-8afe-6c8509cf88bd" class="list-group-item list-group-action">
+                <img src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>Plant</a>
+            </div>
+          </div>
+        </div>
+        <div data-nsd-label-uuid="25f136d0-50c9-430f-b035-4152f14c8aeb" data-nsd-action-uris="uuid:25f136d0-50c9-430f-b035-4152f14c8aeb" class="col nsd-app-content-panel">
+          <div class="container-fluid">
+            <div class="row nsd-app-content-panel-title-and-items-row">
+              <div class="col-auto">
+                <H1><span data-nsd-label-uuid="25f136d0-50c9-430f-b035-4152f14c8aeb" class="nsd-app-content-panel-title"><span class="fas fa-search nsd-app-label-icon"></span>Search</span>
+                </H1>
+              </div>
+            </div>
+            <div class="row nsd-app-content-panel-content-row">
+              <div class="col">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col">		<script src="https://cdn.jsdelivr.net/gh/olivernn/lunr.js@v2.3.9/lunr.js"></script>     
+		<script src="search-documents.js"></script>     
+     	<div id="search-app" class="container-fluid">
+     		<div class="row">
+     			<div class="col">
+					<b-form-group
+			          label="Filter"
+			          label-for="filter-input"
+			          label-cols-sm="3"
+			          label-align-sm="right"
+			          label-size="sm"
+			          class="mb-0"
+					  description="You can use wildcards, e.g. 'foo*' or 'f*o'; title or content fields, e.g. 'title:foo* bar'; boosts, e.g. 'foo^10 bar'; fuzzy matches, e.g. 'foo~1'; and term presence, e.g. '+foo bar -baz'"	          
+			        >
+			          <b-input-group size="sm">
+			            <b-form-input
+			              id="filter-input"
+			              v-model="filter"
+			              type="search"
+			              placeholder="Type to Search"
+			              debounce="700"
+			            ></b-form-input>
+			
+			            <b-input-group-append>
+			              <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+			            </b-input-group-append>
+			          </b-input-group>
+			        </b-form-group>		
+     			</div>     		
+     		</div>
+	        
+	        <div class="row flex-nowrap">
+	        	<div class="col-auto border-right border-secondary pb-1">
+	        		<div id="nsd-site-map-tree">
+	        		</div>
+	        	</div>
+	        	<div class="col">
+			        <b-card 
+			        	v-for="searchResult in searchResults" 
+			        	:header-html="searchResult.title" 
+			        	:footer="searchResult.path"
+			        	class="my-1"
+			        	>
+			        	
+			        	<b-card-text><span v-html="searchResult.content"></span></b-card-text>
+			        </b-card>
+	        	</div>
+	        </div>	        
+     	</div>
+     
+		<script>		      
+			new Vue({
+				  el: '#search-app',
+				  data: {
+			        	filter: null,
+				      searchIndex : lunr(function () {
+						  this.ref('url');
+						  this.field('title');
+						  this.field('content');
+						  this.metadataWhitelist = ['position'];
+	
+						  for (const key in searchDocuments) {
+							  let doc = searchDocuments[key];
+							this.add({
+								url: key,
+								title: doc.title,
+								path: doc.path,
+								content: doc.content
+							});  
+						  }
+						})
+				  },				  
+				  computed: {
+					searchResults: function() {
+						if (this.filter) {
+							let searchResult = this.searchIndex.search(this.filter);
+							let actionUuids = searchResult.map(match => searchDocuments[match.ref]['action-uuid']).join(" ");
+							setTimeout(() => {
+								let treeSearchCallback = $('#nsd-site-map-tree').jstree(true).search;
+								if (treeSearchCallback) {
+									$('#nsd-site-map-tree').jstree(true).search(actionUuids);								
+								}
+							});
+							
+							return searchResult.map(function(e) {
+								let doc = searchDocuments[e.ref];
+								let titleMatches = [];
+								let contentMatches = [];
+								let matchMetaData = e.matchData.metadata;
+								for (const term in matchMetaData) {
+									if (matchMetaData[term]['title']) {
+										let positions = matchMetaData[term]['title'].position;
+										for (const match in positions) {
+											titleMatches.push(positions[match]);
+										}										
+									}
+									if (matchMetaData[term]['content']) {
+										let positions = matchMetaData[term]['content'].position;
+										for (const match in positions) {
+											contentMatches.push(positions[match]);
+										}										
+									}
+								}
+								
+								// Title highlighting
+								titleMatches.sort(function (a, b) { return a[0] - b[0] });
+								let titleElements = [];
+								let idx = 0;
+								for (const matchIdx in titleMatches) {
+									let match = titleMatches[matchIdx];
+									if (match[0] > idx) {
+										titleElements.push(doc.title.substring(idx, match[0]));
+									}
+									idx =  match[0] + match[1];
+									titleElements.push(`<span class='nsd-mark'>${doc.title.substring(match[0], idx)}</span>`);
+								}
+								if (idx < doc.title.length - 1) {
+									titleElements.push(doc.title.substring(idx, doc.title.length));
+								}
+								
+								// Content ellipsing and highlighting
+								contentMatches.sort(function (a, b) { return a[0] - b[0] });
+								let contentElements = [];
+								let snippetLength = 10;
+								idx = 0;
+								for (const matchIdx in contentMatches) {
+									let match = contentMatches[matchIdx];
+									if (match[0] > idx) {
+										let words = doc.content.substring(idx, match[0]).split(' ');
+										let snippetedWords = [];
+										if (idx == 0) {
+											if (words.length <= snippetLength) {
+												snippetedWords = words;
+											} else {
+												snippetedWords.push("&hellip;");
+												words.slice(words.length - snippetLength, words.length).forEach(e => snippetedWords.push(e));
+											}
+										} else {
+											if (words.length <= snippetLength * 2) {
+												snippetedWords = words;
+											} else {
+												words.slice(0, snippetLength).forEach(e => snippetedWords.push(e));
+												snippetedWords.push("&hellip;");
+												words.slice(words.length - snippetLength, words.length).forEach(e => snippetedWords.push(e));
+											}
+											
+										}
+										contentElements.push(snippetedWords.join(' '));
+									}
+									idx =  match[0] + match[1];
+									contentElements.push(`<span class='nsd-mark'>${doc.content.substring(match[0], idx)}</span>`);
+								}
+								if (idx < doc.content.length - 1) {
+									let words = doc.content.substring(idx, doc.content.length).split(' ');
+									if (idx == 0) {
+										if (words.length < snippetLength * 2) {
+											contentElements.push(doc.content);
+										} else {
+											let snippetedWords = [];
+											words.slice(0, snippetLength * 2).forEach(e => snippetedWords.push(e));
+											snippetedWords.push("&hellip;");
+											contentElements.push(snippetedWords.join(' '));
+										}
+									} else {
+										let snippetedWords = [];
+										if (words.length <= snippetLength) {
+											snippetedWords = words;
+										} else {
+											words.slice(0, snippetLength).forEach(e => snippetedWords.push(e));
+											snippetedWords.push("&hellip;");
+										}
+										contentElements.push(snippetedWords.join(' '));
+									}
+								}
+								return {
+									title: `<h5><a href="${e.ref}">${titleElements.join('')}</a></h5>`,
+									path: doc.path,
+									content: contentElements.join('')
+								};									
+							});
+						} 
+						setTimeout(() => {
+							let treeSearchCallback = $('#nsd-site-map-tree').jstree(true).search;
+							if (treeSearchCallback) {
+								$('#nsd-site-map-tree').jstree(true).search('');								
+							}
+						});
+						return [];
+					}  
+				  }
+			});   			
+		</script>
+		
+
+<script>$(document).ready( function() {
+$('#nsd-site-map-tree').jstree(function(tree) { tree.state.filter = function(state) { delete state.core.selected; return state; }; tree.search.search_callback = (results, node) => results.split(' ').includes(node.original['data-nsd-label-uuid']); return tree; }({"core":{"data":[{"a_attr":{"onclick":"window.location='https://www.nasdanika.org';"},"children":[{"children":[{"a_attr":{"onclick":"window.location='index.html';"},"data-nsd-label-uuid":"48363624-6cc7-4598-bc56-4f0915cd0b37","icon":"fa fa-book","id":"237041c8-73ec-4b06-8a11-af4c748f3a15","text":"Test Models Documentation","type":"leaf"},{"data-nsd-label-uuid":"25f136d0-50c9-430f-b035-4152f14c8aeb","icon":"fas fa-search","id":"e41b6e86-f6b8-444a-bb90-3f50b2141a77","text":"Search","type":"leaf"},{"a_attr":{"onclick":"window.location='glossary.html';"},"data-nsd-label-uuid":"bb4546f9-a5ef-42e5-91fd-c36b4253281f","icon":"fas fa-book","id":"47359a1c-e576-4fdf-9187-b22c3af7f262","text":"Glossary","type":"leaf"}],"text":"Children"}],"data-nsd-label-uuid":"abf6e1e0-7e34-4836-9f3b-79265682886e","icon":"https://docs.nasdanika.org/images/nasdanika-logo.png","id":"4e5b726a-ea68-4e92-90f1-0ce250da1664","text":"Nasdanika","type":"leaf"},{"a_attr":{"onclick":"window.location='test/index.html';"},"children":[{"children":[{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Animal/index.html';"},"data-nsd-label-uuid":"3b8899af-7b37-4b9a-a958-8b9bb70e0dae","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif","id":"828909c7-3b75-4269-9b80-0c87c496c331","text":"Animal","type":"leaf"},{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Color/index.html';"},"data-nsd-label-uuid":"d02aef47-3fc9-4fb8-b779-423d1d6bd106","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EEnum.gif","id":"d08f4b31-482d-411c-aea0-f62a89ada607","text":"Color","type":"leaf"},{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Food/index.html';"},"data-nsd-label-uuid":"76337f1e-7a9a-4b37-9435-ef0da045278d","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif","id":"24feaa44-7df3-4de1-9c6a-1d7e201681e3","text":"Food","type":"leaf"},{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Fox/index.html';"},"data-nsd-label-uuid":"2cbf6200-4c7c-49b2-beb6-a1b84ce1838c","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif","id":"2b481c59-c54b-412f-a25f-7486e1fc307f","text":"Fox","type":"leaf"},{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Grass/index.html';"},"data-nsd-label-uuid":"f1b33fbd-ce22-49f6-9eb6-6f10594821d7","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif","id":"bb02c9fb-e75c-4916-8b57-f9a528cb66bb","text":"Grass","type":"leaf"},{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Hare/index.html';"},"data-nsd-label-uuid":"e0ce2851-eb97-4a65-a92b-01b1fa1d7e32","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif","id":"de596980-dd16-4089-af7c-41b94cc46cdf","text":"Hare","type":"leaf"},{"a_attr":{"onclick":"window.location='test/references/eClassifiers/LivingBeing/index.html';"},"data-nsd-label-uuid":"ce5286c2-9734-4cf2-a15e-ff08d63775d6","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif","id":"67bc6910-6d18-4416-9d59-670911d91e64","text":"LivingBeing","type":"leaf"},{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Plant/index.html';"},"data-nsd-label-uuid":"f14079ee-64ba-467c-8afe-6c8509cf88bd","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EClass.gif","id":"cacf67cc-a961-4fbb-b098-95bbf20b26d3","text":"Plant","type":"leaf"}],"text":"E classifiers"}],"data-nsd-label-uuid":"f96fc999-3239-4679-8fa0-a82d8dabd7f5","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EPackage.gif","id":"3d33a055-7b37-4d35-8e24-85be3c0e3160","text":"test","type":"leaf"},{"children":[{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Animal/attributes.html';"},"data-nsd-label-uuid":"d19d989e-1dcc-48ba-9d2a-15d15b776dc0","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif","id":"f0338396-fbac-4a3c-b7e4-29bac71bd07a","text":"Attributes","type":"leaf"},{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Animal/operations.html';"},"data-nsd-label-uuid":"c7ad5659-c5be-4a8e-bd6c-e0089d4dbb98","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EOperation.gif","id":"668c471c-43c5-4129-bcf3-aae6a6532759","text":"Operations","type":"leaf"}],"text":"Navigation"},{"children":[{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Fox/attributes.html';"},"data-nsd-label-uuid":"4e1f6f2e-ac62-4a20-991a-aae3159f90e2","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif","id":"64e0f235-87f3-42ea-aa50-47181960e9db","text":"Attributes","type":"leaf"},{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Fox/operations.html';"},"data-nsd-label-uuid":"d547a4a2-41f1-4d2b-9558-2be57c50eaf0","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EOperation.gif","id":"e0a8d73d-33d7-4b0c-991e-30ef31693837","text":"Operations","type":"leaf"}],"text":"Navigation"},{"children":[{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Grass/attributes.html';"},"data-nsd-label-uuid":"09535af9-ad56-4f3f-af5f-7a7f1a27f21e","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif","id":"84419f3e-c07a-4b5a-a468-8711eb820817","text":"Attributes","type":"leaf"}],"text":"Navigation"},{"children":[{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Hare/attributes.html';"},"data-nsd-label-uuid":"c3fc648a-b757-4ee4-9761-c34b48733586","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif","id":"d1bb1c66-c003-4e01-88a6-4eafcc5b054d","text":"Attributes","type":"leaf"},{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Hare/operations.html';"},"data-nsd-label-uuid":"14b88c1b-7e7d-43ab-90a3-aa6c00c74a9a","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EOperation.gif","id":"022206c5-0fa6-45cd-a6a1-1f81291ecdba","text":"Operations","type":"leaf"}],"text":"Navigation"},{"children":[{"a_attr":{"onclick":"window.location='test/references/eClassifiers/LivingBeing/attributes.html';"},"data-nsd-label-uuid":"e4ae8de9-29c2-47cd-9391-2bc78af95561","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif","id":"14fe73c5-816e-4c65-9ea3-3faf0f05e03d","text":"Attributes","type":"leaf"}],"text":"Navigation"},{"children":[{"a_attr":{"onclick":"window.location='test/references/eClassifiers/Plant/attributes.html';"},"data-nsd-label-uuid":"7fdf4a37-5156-40a1-9141-5194f614e589","icon":"https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif","id":"f32024a1-c755-458f-9166-98ec7be24dd7","text":"Attributes","type":"leaf"}],"text":"Navigation"}]},"search":{"show_only_matches":true},"plugins":["state","search"],"state":{"key":"nsd-site-map-tree"}}));
+});</script>
+				
+		</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
