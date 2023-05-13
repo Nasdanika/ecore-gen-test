@@ -1,6 +1,6 @@
 [
     {
-        "identifiers": ["uuid:abf6e1e0-7e34-4836-9f3b-79265682886e"],
+        "identifiers": ["uuid:4e4b199b-a245-4e38-b6ae-138942225ca8"],
         "name": "Nasdanika",
         "icon": "https://docs.nasdanika.org/images/nasdanika-logo.png",
         "location": "https://www.nasdanika.org",
@@ -12,9 +12,9 @@
     {
         "container": {
             "reference": "children",
-            "identifiers": ["uuid:abf6e1e0-7e34-4836-9f3b-79265682886e"]
+            "identifiers": ["uuid:4e4b199b-a245-4e38-b6ae-138942225ca8"]
         },
-        "identifiers": ["uuid:48363624-6cc7-4598-bc56-4f0915cd0b37"],
+        "identifiers": ["uuid:c9785589-7eb3-467f-87d1-a64cc54a5c02"],
         "name": "Test Models Documentation",
         "icon": "fa fa-book",
         "location": "index.html",
@@ -26,9 +26,9 @@
     {
         "container": {
             "reference": "children",
-            "identifiers": ["uuid:abf6e1e0-7e34-4836-9f3b-79265682886e"]
+            "identifiers": ["uuid:4e4b199b-a245-4e38-b6ae-138942225ca8"]
         },
-        "identifiers": ["uuid:25f136d0-50c9-430f-b035-4152f14c8aeb"],
+        "identifiers": ["uuid:b900d8f5-cfe7-4f37-980e-f5ace5f62118"],
         "name": "Search",
         "icon": "fas fa-search",
         "location": "search.html",
@@ -40,9 +40,9 @@
     {
         "container": {
             "reference": "children",
-            "identifiers": ["uuid:abf6e1e0-7e34-4836-9f3b-79265682886e"]
+            "identifiers": ["uuid:4e4b199b-a245-4e38-b6ae-138942225ca8"]
         },
-        "identifiers": ["uuid:bb4546f9-a5ef-42e5-91fd-c36b4253281f"],
+        "identifiers": ["uuid:5bc23792-7b6e-4371-9f92-a3e81faec67d"],
         "name": "Glossary",
         "icon": "fas fa-book",
         "location": "glossary.html",
@@ -78,9 +78,9 @@
     {
         "container": {
             "reference": "navigation",
-            "identifiers": ["uuid:3b8899af-7b37-4b9a-a958-8b9bb70e0dae"]
+            "identifiers": ["uuid:a9cb41ab-21be-4f50-bdcd-7967f7892f7e"]
         },
-        "identifiers": ["uuid:d19d989e-1dcc-48ba-9d2a-15d15b776dc0"],
+        "identifiers": ["uuid:666f22cd-b265-42d5-95ce-042dc6cacf14"],
         "name": "Attributes",
         "icon": "https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif",
         "location": "test/references/eClassifiers/Animal/attributes.html",
@@ -92,9 +92,9 @@
     {
         "container": {
             "reference": "navigation",
-            "identifiers": ["uuid:3b8899af-7b37-4b9a-a958-8b9bb70e0dae"]
+            "identifiers": ["uuid:a9cb41ab-21be-4f50-bdcd-7967f7892f7e"]
         },
-        "identifiers": ["uuid:c7ad5659-c5be-4a8e-bd6c-e0089d4dbb98"],
+        "identifiers": ["uuid:cdbe5edc-8d76-4136-b6d8-e9368a6d7451"],
         "name": "Operations",
         "icon": "https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EOperation.gif",
         "location": "test/references/eClassifiers/Animal/operations.html",
@@ -148,9 +148,9 @@
     {
         "container": {
             "reference": "navigation",
-            "identifiers": ["uuid:2cbf6200-4c7c-49b2-beb6-a1b84ce1838c"]
+            "identifiers": ["uuid:2b148b81-1bc3-4418-af97-0094e3c950b9"]
         },
-        "identifiers": ["uuid:4e1f6f2e-ac62-4a20-991a-aae3159f90e2"],
+        "identifiers": ["uuid:868d3c39-7d2c-4f64-8b86-2c4786c82675"],
         "name": "Attributes",
         "icon": "https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif",
         "location": "test/references/eClassifiers/Fox/attributes.html",
@@ -162,9 +162,9 @@
     {
         "container": {
             "reference": "navigation",
-            "identifiers": ["uuid:2cbf6200-4c7c-49b2-beb6-a1b84ce1838c"]
+            "identifiers": ["uuid:2b148b81-1bc3-4418-af97-0094e3c950b9"]
         },
-        "identifiers": ["uuid:d547a4a2-41f1-4d2b-9558-2be57c50eaf0"],
+        "identifiers": ["uuid:8a85ceab-6592-4fd8-92f8-1463023af44e"],
         "name": "Operations",
         "icon": "https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EOperation.gif",
         "location": "test/references/eClassifiers/Fox/operations.html",
@@ -190,9 +190,9 @@
     {
         "container": {
             "reference": "navigation",
-            "identifiers": ["uuid:f1b33fbd-ce22-49f6-9eb6-6f10594821d7"]
+            "identifiers": ["uuid:b08014ae-f909-446a-9ca4-27d55b71ecd9"]
         },
-        "identifiers": ["uuid:09535af9-ad56-4f3f-af5f-7a7f1a27f21e"],
+        "identifiers": ["uuid:451334c0-6d53-4cdc-9994-c3dd741fb44a"],
         "name": "Attributes",
         "icon": "https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif",
         "location": "test/references/eClassifiers/Grass/attributes.html",
@@ -218,9 +218,9 @@
     {
         "container": {
             "reference": "navigation",
-            "identifiers": ["uuid:e0ce2851-eb97-4a65-a92b-01b1fa1d7e32"]
+            "identifiers": ["uuid:8a3dae85-95f4-4b3a-b508-d0c513070be5"]
         },
-        "identifiers": ["uuid:c3fc648a-b757-4ee4-9761-c34b48733586"],
+        "identifiers": ["uuid:b8cf88c4-4198-4e60-a47d-9fc5594e2fe4"],
         "name": "Attributes",
         "icon": "https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif",
         "location": "test/references/eClassifiers/Hare/attributes.html",
@@ -232,9 +232,9 @@
     {
         "container": {
             "reference": "navigation",
-            "identifiers": ["uuid:e0ce2851-eb97-4a65-a92b-01b1fa1d7e32"]
+            "identifiers": ["uuid:8a3dae85-95f4-4b3a-b508-d0c513070be5"]
         },
-        "identifiers": ["uuid:14b88c1b-7e7d-43ab-90a3-aa6c00c74a9a"],
+        "identifiers": ["uuid:b70e1d79-00e7-4ff8-8039-a78f46972487"],
         "name": "Operations",
         "icon": "https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EOperation.gif",
         "location": "test/references/eClassifiers/Hare/operations.html",
@@ -260,9 +260,9 @@
     {
         "container": {
             "reference": "navigation",
-            "identifiers": ["uuid:ce5286c2-9734-4cf2-a15e-ff08d63775d6"]
+            "identifiers": ["uuid:7e88692c-6c37-4bb4-b173-e4485f6608a6"]
         },
-        "identifiers": ["uuid:e4ae8de9-29c2-47cd-9391-2bc78af95561"],
+        "identifiers": ["uuid:38ccd638-43e2-4c78-8c7e-b5c84e189973"],
         "name": "Attributes",
         "icon": "https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif",
         "location": "test/references/eClassifiers/LivingBeing/attributes.html",
@@ -288,9 +288,9 @@
     {
         "container": {
             "reference": "navigation",
-            "identifiers": ["uuid:f14079ee-64ba-467c-8afe-6c8509cf88bd"]
+            "identifiers": ["uuid:21e14547-44cb-4d24-94d2-df25317036f8"]
         },
-        "identifiers": ["uuid:7fdf4a37-5156-40a1-9141-5194f614e589"],
+        "identifiers": ["uuid:551041bd-117c-45f9-9a5a-a300d8d98569"],
         "name": "Attributes",
         "icon": "https://cdn.jsdelivr.net/gh/Nasdanika/html@master/ecore.gen/web-resources/icons/EAttribute.gif",
         "location": "test/references/eClassifiers/Plant/attributes.html",
