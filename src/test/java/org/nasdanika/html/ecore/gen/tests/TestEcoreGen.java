@@ -14,12 +14,16 @@ import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.DiagnosticException;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.common.Context;
@@ -186,6 +190,15 @@ public class TestEcoreGen {
 		if (errors.size() != 0) {
 			throw new ExecutionException("There are problems with pages: " + errorCount);
 		}		
+	}
+	
+	@Test
+	public void testReify() {
+		EOperation eatsOp = TestPackage.Literals.ANIMAL___EATS__FOOD;
+		
+		EGenericType pType = eatsOp.getEParameters().get(0).getEGenericType();
+		EGenericType rType = EcoreUtil.getReifiedType(TestPackage.Literals.FOX, pType);
+		System.out.println(pType + " -> " + rType);
 	}
 
 }
