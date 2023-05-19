@@ -33,7 +33,7 @@ import org.nasdanika.graph.emf.EObjectGraphFactory;
 import org.nasdanika.graph.emf.EObjectNode;
 import org.nasdanika.graph.processor.IntrospectionLevel;
 import org.nasdanika.graph.processor.ProcessorInfo;
-import org.nasdanika.html.ecore.gen.processors.EcoreGraphFactory;
+import org.nasdanika.html.ecore.gen.EcoreGraphFactory;
 import org.nasdanika.html.ecore.gen.processors.EcoreNodeProcessorFactory;
 import org.nasdanika.html.ecore.gen.test.TestPackage;
 import org.nasdanika.html.model.app.Action;
@@ -55,10 +55,10 @@ public class TestEcoreGen {
 	public void testGraphEcoreDoc() throws IOException, DiagnosticException {
 		List<EPackage> ePackages = Arrays.asList(EcorePackage.eINSTANCE, TestPackage.eINSTANCE);
 		EObjectGraphFactory graphFactory = new EcoreGraphFactory();
-		List<EObjectNode> nodes = graphFactory.createGraph(ePackages);
+		ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
+		List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
 		
 		Context context = Context.EMPTY_CONTEXT;
-		ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
 		Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);
 
 		List<Function<URI,Action>> actionProviders = new ArrayList<>();		

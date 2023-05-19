@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -95,6 +96,80 @@ public interface TestPackage extends EPackage {
 	int LIVING_BEING_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.html.ecore.gen.test.impl.BiomeImpl <em>Biome</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.html.ecore.gen.test.impl.BiomeImpl
+	 * @see org.nasdanika.html.ecore.gen.test.impl.TestPackageImpl#getBiome()
+	 * @generated
+	 */
+	int BIOME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Living Beings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BIOME__LIVING_BEINGS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Biome</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BIOME_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Biome</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BIOME_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.html.ecore.gen.test.impl.ForestImpl <em>Forest</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.html.ecore.gen.test.impl.ForestImpl
+	 * @see org.nasdanika.html.ecore.gen.test.impl.TestPackageImpl#getForest()
+	 * @generated
+	 */
+	int FOREST = 2;
+
+	/**
+	 * The feature id for the '<em><b>Living Beings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOREST__LIVING_BEINGS = BIOME__LIVING_BEINGS;
+
+	/**
+	 * The number of structural features of the '<em>Forest</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOREST_FEATURE_COUNT = BIOME_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Forest</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOREST_OPERATION_COUNT = BIOME_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.nasdanika.html.ecore.gen.test.Food <em>Food</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,7 +177,7 @@ public interface TestPackage extends EPackage {
 	 * @see org.nasdanika.html.ecore.gen.test.impl.TestPackageImpl#getFood()
 	 * @generated
 	 */
-	int FOOD = 1;
+	int FOOD = 3;
 
 	/**
 	 * The number of structural features of the '<em>Food</em>' class.
@@ -130,7 +205,7 @@ public interface TestPackage extends EPackage {
 	 * @see org.nasdanika.html.ecore.gen.test.impl.TestPackageImpl#getAnimal()
 	 * @generated
 	 */
-	int ANIMAL = 2;
+	int ANIMAL = 4;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' attribute.
@@ -194,7 +269,7 @@ public interface TestPackage extends EPackage {
 	 * @see org.nasdanika.html.ecore.gen.test.impl.TestPackageImpl#getPlant()
 	 * @generated
 	 */
-	int PLANT = 3;
+	int PLANT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' attribute.
@@ -231,7 +306,7 @@ public interface TestPackage extends EPackage {
 	 * @see org.nasdanika.html.ecore.gen.test.impl.TestPackageImpl#getGrass()
 	 * @generated
 	 */
-	int GRASS = 4;
+	int GRASS = 6;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' attribute.
@@ -268,7 +343,7 @@ public interface TestPackage extends EPackage {
 	 * @see org.nasdanika.html.ecore.gen.test.impl.TestPackageImpl#getHare()
 	 * @generated
 	 */
-	int HARE = 5;
+	int HARE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' attribute.
@@ -332,7 +407,7 @@ public interface TestPackage extends EPackage {
 	 * @see org.nasdanika.html.ecore.gen.test.impl.TestPackageImpl#getFox()
 	 * @generated
 	 */
-	int FOX = 6;
+	int FOX = 8;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' attribute.
@@ -396,7 +471,7 @@ public interface TestPackage extends EPackage {
 	 * @see org.nasdanika.html.ecore.gen.test.impl.TestPackageImpl#getColor()
 	 * @generated
 	 */
-	int COLOR = 7;
+	int COLOR = 9;
 
 
 	/**
@@ -419,6 +494,37 @@ public interface TestPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLivingBeing_Color();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.html.ecore.gen.test.Biome <em>Biome</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Biome</em>'.
+	 * @see org.nasdanika.html.ecore.gen.test.Biome
+	 * @generated
+	 */
+	EClass getBiome();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.html.ecore.gen.test.Biome#getLivingBeings <em>Living Beings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Living Beings</em>'.
+	 * @see org.nasdanika.html.ecore.gen.test.Biome#getLivingBeings()
+	 * @see #getBiome()
+	 * @generated
+	 */
+	EReference getBiome_LivingBeings();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.html.ecore.gen.test.Forest <em>Forest</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Forest</em>'.
+	 * @see org.nasdanika.html.ecore.gen.test.Forest
+	 * @generated
+	 */
+	EClass getForest();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.html.ecore.gen.test.Food <em>Food</em>}'.
@@ -562,6 +668,34 @@ public interface TestPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LIVING_BEING__COLOR = eINSTANCE.getLivingBeing_Color();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.html.ecore.gen.test.impl.BiomeImpl <em>Biome</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.html.ecore.gen.test.impl.BiomeImpl
+		 * @see org.nasdanika.html.ecore.gen.test.impl.TestPackageImpl#getBiome()
+		 * @generated
+		 */
+		EClass BIOME = eINSTANCE.getBiome();
+
+		/**
+		 * The meta object literal for the '<em><b>Living Beings</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BIOME__LIVING_BEINGS = eINSTANCE.getBiome_LivingBeings();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.html.ecore.gen.test.impl.ForestImpl <em>Forest</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.html.ecore.gen.test.impl.ForestImpl
+		 * @see org.nasdanika.html.ecore.gen.test.impl.TestPackageImpl#getForest()
+		 * @generated
+		 */
+		EClass FOREST = eINSTANCE.getForest();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.html.ecore.gen.test.Food <em>Food</em>}' class.

@@ -8,13 +8,16 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.nasdanika.html.ecore.gen.test.Animal;
+import org.nasdanika.html.ecore.gen.test.Biome;
 import org.nasdanika.html.ecore.gen.test.Color;
 import org.nasdanika.html.ecore.gen.test.Food;
+import org.nasdanika.html.ecore.gen.test.Forest;
 import org.nasdanika.html.ecore.gen.test.Fox;
 import org.nasdanika.html.ecore.gen.test.Grass;
 import org.nasdanika.html.ecore.gen.test.Hare;
@@ -36,6 +39,20 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 	 * @generated
 	 */
 	private EClass livingBeingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass biomeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass forestEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,6 +186,33 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getBiome() {
+		return biomeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBiome_LivingBeings() {
+		return (EReference)biomeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getForest() {
+		return forestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFood() {
 		return foodEClass;
 	}
@@ -285,6 +329,11 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 		livingBeingEClass = createEClass(LIVING_BEING);
 		createEAttribute(livingBeingEClass, LIVING_BEING__COLOR);
 
+		biomeEClass = createEClass(BIOME);
+		createEReference(biomeEClass, BIOME__LIVING_BEINGS);
+
+		forestEClass = createEClass(FOREST);
+
 		foodEClass = createEClass(FOOD);
 
 		animalEClass = createEClass(ANIMAL);
@@ -335,6 +384,7 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 		animalEClass_F.getEBounds().add(g1);
 
 		// Add supertypes to classes
+		forestEClass.getESuperTypes().add(this.getBiome());
 		animalEClass.getESuperTypes().add(this.getLivingBeing());
 		plantEClass.getESuperTypes().add(this.getLivingBeing());
 		grassEClass.getESuperTypes().add(this.getPlant());
@@ -353,6 +403,11 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 		// Initialize classes, features, and operations; add parameters
 		initEClass(livingBeingEClass, LivingBeing.class, "LivingBeing", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLivingBeing_Color(), this.getColor(), "color", null, 0, 1, LivingBeing.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(biomeEClass, Biome.class, "Biome", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBiome_LivingBeings(), this.getLivingBeing(), null, "livingBeings", null, 0, -1, Biome.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(forestEClass, Forest.class, "Forest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(foodEClass, Food.class, "Food", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

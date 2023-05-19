@@ -31,6 +31,24 @@ public interface TestFactory extends EFactory {
 	LivingBeing createLivingBeing();
 
 	/**
+	 * Returns a new object of class '<em>Biome</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Biome</em>'.
+	 * @generated
+	 */
+	Biome createBiome();
+
+	/**
+	 * Returns a new object of class '<em>Forest</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Forest</em>'.
+	 * @generated
+	 */
+	Forest createForest();
+
+	/**
 	 * Returns a new object of class '<em>Animal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

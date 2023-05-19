@@ -72,6 +72,14 @@ public class TestAdapterFactory extends AdapterFactoryImpl {
 				return createLivingBeingAdapter();
 			}
 			@Override
+			public Adapter caseBiome(Biome object) {
+				return createBiomeAdapter();
+			}
+			@Override
+			public Adapter caseForest(Forest object) {
+				return createForestAdapter();
+			}
+			@Override
 			public Adapter caseFood(Food object) {
 				return createFoodAdapter();
 			}
@@ -126,6 +134,34 @@ public class TestAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLivingBeingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.html.ecore.gen.test.Biome <em>Biome</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.html.ecore.gen.test.Biome
+	 * @generated
+	 */
+	public Adapter createBiomeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.html.ecore.gen.test.Forest <em>Forest</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.html.ecore.gen.test.Forest
+	 * @generated
+	 */
+	public Adapter createForestAdapter() {
 		return null;
 	}
 

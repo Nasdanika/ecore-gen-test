@@ -58,6 +58,8 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case TestPackage.LIVING_BEING: return createLivingBeing();
+			case TestPackage.BIOME: return createBiome();
+			case TestPackage.FOREST: return createForest();
 			case TestPackage.ANIMAL: return createAnimal();
 			case TestPackage.PLANT: return createPlant();
 			case TestPackage.GRASS: return createGrass();
@@ -106,6 +108,26 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	public LivingBeing createLivingBeing() {
 		LivingBeingImpl livingBeing = new LivingBeingImpl();
 		return livingBeing;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Biome createBiome() {
+		BiomeImpl biome = new BiomeImpl();
+		return biome;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Forest createForest() {
+		ForestImpl forest = new ForestImpl();
+		return forest;
 	}
 
 	/**

@@ -14,6 +14,10 @@
     <genClasses ecoreClass="ecore-gen-test.ecore#//LivingBeing">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ecore-gen-test.ecore#//LivingBeing/color"/>
     </genClasses>
+    <genClasses ecoreClass="ecore-gen-test.ecore#//Biome">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ecore-gen-test.ecore#//Biome/livingBeings"/>
+    </genClasses>
+    <genClasses ecoreClass="ecore-gen-test.ecore#//Forest"/>
     <genClasses image="false" ecoreClass="ecore-gen-test.ecore#//Food"/>
     <genClasses ecoreClass="ecore-gen-test.ecore#//Animal">
       <genTypeParameters ecoreTypeParameter="ecore-gen-test.ecore#//Animal/F"/>

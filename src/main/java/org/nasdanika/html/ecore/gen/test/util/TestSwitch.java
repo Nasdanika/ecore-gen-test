@@ -72,6 +72,19 @@ public class TestSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TestPackage.BIOME: {
+				Biome biome = (Biome)theEObject;
+				T result = caseBiome(biome);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestPackage.FOREST: {
+				Forest forest = (Forest)theEObject;
+				T result = caseForest(forest);
+				if (result == null) result = caseBiome(forest);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TestPackage.FOOD: {
 				Food food = (Food)theEObject;
 				T result = caseFood(food);
@@ -134,6 +147,36 @@ public class TestSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLivingBeing(LivingBeing object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Biome</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Biome</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBiome(Biome object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Forest</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Forest</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseForest(Forest object) {
 		return null;
 	}
 
