@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ecore-gen-test-model</name>
-	<comment>Test model HTML ecore-gen</comment>
+	<name>ecore-gen-test-processors</name>
+	<comment>Test model and documentation generation for HTML ecore-gen</comment>
 	<projects>
 	</projects>
 	<buildSpec>
