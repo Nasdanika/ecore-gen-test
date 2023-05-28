@@ -1,8 +1,7 @@
 module org.nasdanika.html.ecore.gen.test.model {
 		
-	requires transitive org.nasdanika.html.ecore.gen;
-	requires transitive org.nasdanika.html.model.app.gen;
-	requires org.eclipse.emf.ecore.xmi;
+	requires transitive org.eclipse.emf.common;
+	requires transitive org.eclipse.emf.ecore;
 	
 	exports org.nasdanika.html.ecore.gen.test;	
 }

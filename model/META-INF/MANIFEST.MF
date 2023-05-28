@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: ecore-gen-test;singleton:=true
-Automatic-Module-Name: ecore-gen-test
+Bundle-SymbolicName: ecore-gen-test-model;singleton:=true
+Automatic-Module-Name: ecore-gen-test-model
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
