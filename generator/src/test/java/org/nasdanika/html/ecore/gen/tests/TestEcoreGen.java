@@ -31,7 +31,6 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.graph.Element;
 import org.nasdanika.graph.emf.EObjectGraphFactory;
 import org.nasdanika.graph.emf.EObjectNode;
-import org.nasdanika.graph.processor.IntrospectionLevel;
 import org.nasdanika.graph.processor.ProcessorInfo;
 import org.nasdanika.html.ecore.gen.EcoreGraphFactory;
 import org.nasdanika.html.ecore.gen.processors.EcoreNodeProcessorFactory;
@@ -76,7 +75,7 @@ public class TestEcoreGen {
 			return null;
 		});
 		
-		EObjectReflectiveProcessorFactory eObjectReflectiveProcessorFactory = new EObjectReflectiveProcessorFactory(IntrospectionLevel.ACCESSIBLE, ecoreNodeProcessorFactory);
+		EObjectReflectiveProcessorFactory eObjectReflectiveProcessorFactory = new EObjectReflectiveProcessorFactory(ecoreNodeProcessorFactory);
 		
 		org.nasdanika.html.model.app.graph.Registry<URI> registry = eObjectReflectiveProcessorFactory.createProcessors(nodes, progressMonitor);
 		
