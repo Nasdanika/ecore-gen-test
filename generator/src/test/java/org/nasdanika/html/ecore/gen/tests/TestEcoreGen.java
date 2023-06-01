@@ -32,15 +32,18 @@ import org.nasdanika.graph.Element;
 import org.nasdanika.graph.emf.EObjectGraphFactory;
 import org.nasdanika.graph.emf.EObjectNode;
 import org.nasdanika.graph.processor.ProcessorInfo;
+import org.nasdanika.graph.processor.emf.EObjectNodeProcessorReflectiveFactory;
 import org.nasdanika.html.ecore.gen.EcoreGraphFactory;
 import org.nasdanika.html.ecore.gen.processors.EcoreNodeProcessorFactory;
 import org.nasdanika.html.ecore.gen.test.TestPackage;
+import org.nasdanika.html.ecore.gen.test.processors.EcoreGenTestProcessorsFactory;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.Label;
 import org.nasdanika.html.model.app.Link;
 import org.nasdanika.html.model.app.gen.ActionSiteGenerator;
 import org.nasdanika.html.model.app.graph.Registry;
 import org.nasdanika.html.model.app.graph.URINodeProcessor;
+import org.nasdanika.html.model.app.graph.WidgetFactory;
 import org.nasdanika.html.model.app.graph.emf.EObjectReflectiveProcessorFactory;
 
 /**
@@ -65,6 +68,9 @@ public class TestEcoreGen {
 //		CoreDocLoader coreDocLoader = new CoreDocLoader(diagnosticConsumer, context, progressMonitor);
 //		actionProviders.add(coreDocLoader::getPrototype);
 		
+		EcoreGenTestProcessorsFactory ecoreGenTestProcessorFactory = new EcoreGenTestProcessorsFactory();
+		
+		
 		EcoreNodeProcessorFactory ecoreNodeProcessorFactory = new EcoreNodeProcessorFactory(context, (uri, pm) -> {
 			for (Function<URI, Action> ap: actionProviders) {
 				Action prototype = ap.apply(uri);
@@ -73,9 +79,12 @@ public class TestEcoreGen {
 				}
 			}
 			return null;
-		});
+		},
+		ecoreGenTestProcessorFactory);
 		
-		EObjectReflectiveProcessorFactory eObjectReflectiveProcessorFactory = new EObjectReflectiveProcessorFactory(ecoreNodeProcessorFactory);
+		EObjectNodeProcessorReflectiveFactory<Object, WidgetFactory, WidgetFactory, Registry<URI>> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
+		
+		EObjectReflectiveProcessorFactory eObjectReflectiveProcessorFactory = new EObjectReflectiveProcessorFactory(eObjectNodeProcessorReflectiveFactory);
 		
 		org.nasdanika.html.model.app.graph.Registry<URI> registry = eObjectReflectiveProcessorFactory.createProcessors(nodes, progressMonitor);
 		
