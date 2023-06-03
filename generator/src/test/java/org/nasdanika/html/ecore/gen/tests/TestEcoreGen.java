@@ -71,16 +71,19 @@ public class TestEcoreGen {
 		EcoreGenTestProcessorsFactory ecoreGenTestProcessorFactory = new EcoreGenTestProcessorsFactory();
 		
 		
-		EcoreNodeProcessorFactory ecoreNodeProcessorFactory = new EcoreNodeProcessorFactory(context, (uri, pm) -> {
-			for (Function<URI, Action> ap: actionProviders) {
-				Action prototype = ap.apply(uri);
-				if (prototype != null) {
-					return prototype;
-				}
-			}
-			return null;
-		},
-		ecoreGenTestProcessorFactory);
+		EcoreNodeProcessorFactory ecoreNodeProcessorFactory = new EcoreNodeProcessorFactory(
+				context, 
+				(uri, pm) -> {
+					for (Function<URI, Action> ap: actionProviders) {
+						Action prototype = ap.apply(uri);
+						if (prototype != null) {
+							return prototype;
+						}
+					}
+					return null;
+				},
+				diagnosticConsumer,
+				ecoreGenTestProcessorFactory);
 		
 		EObjectNodeProcessorReflectiveFactory<Object, WidgetFactory, WidgetFactory, Registry<URI>> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
 		
