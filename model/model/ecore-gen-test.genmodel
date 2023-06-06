@@ -25,6 +25,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ecore-gen-test.ecore#//Animal/name"/>
       <genOperations ecoreOperation="ecore-gen-test.ecore#//Animal/eats">
         <genParameters ecoreParameter="ecore-gen-test.ecore#//Animal/eats/food"/>
+        <genParameters ecoreParameter="ecore-gen-test.ecore#//Animal/eats/appetizer"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="ecore-gen-test.ecore#//Plant"/>

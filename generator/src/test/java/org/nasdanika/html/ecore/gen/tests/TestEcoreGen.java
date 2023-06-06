@@ -27,6 +27,7 @@ import org.nasdanika.common.Diagnostic;
 import org.nasdanika.common.ExecutionException;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.NullProgressMonitor;
+import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.graph.Element;
 import org.nasdanika.graph.emf.EObjectGraphFactory;
@@ -35,8 +36,10 @@ import org.nasdanika.graph.processor.ProcessorInfo;
 import org.nasdanika.graph.processor.emf.EObjectNodeProcessorReflectiveFactory;
 import org.nasdanika.html.ecore.gen.EcoreGraphFactory;
 import org.nasdanika.html.ecore.gen.processors.EcoreNodeProcessorFactory;
+import org.nasdanika.html.ecore.gen.test.Fox;
 import org.nasdanika.html.ecore.gen.test.TestPackage;
 import org.nasdanika.html.ecore.gen.test.processors.EcoreGenTestProcessorsFactory;
+import org.nasdanika.html.ecore.gen.test.util.TestObjectLoaderSupplier;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.Label;
 import org.nasdanika.html.model.app.Link;
@@ -45,6 +48,7 @@ import org.nasdanika.html.model.app.graph.Registry;
 import org.nasdanika.html.model.app.graph.URINodeProcessor;
 import org.nasdanika.html.model.app.graph.WidgetFactory;
 import org.nasdanika.html.model.app.graph.emf.EObjectReflectiveProcessorFactory;
+import org.nasdanika.persistence.ObjectLoaderResource;
 
 /**
  * Tests Ecore -> Graph -> Processor -> actions generation
@@ -197,6 +201,33 @@ public class TestEcoreGen {
 		if (errors.size() != 0) {
 			throw new ExecutionException("There are problems with pages: " + errorCount);
 		}		
+	}
+	
+	private static final String SPEC = """
+			test-fox:
+			    name: Лиса Патрикеевна
+			    eats:
+			      food:
+			          test-hare:
+			              name: Зайка-Попрыгайка
+			              color: WHITE
+			      appetizer:
+			          test-hare:
+			            name: Yet another  
+			    
+			""";
+	
+	@Test
+	public void testLoad() {
+		URI specURI = ObjectLoaderResource.encode(SPEC, "YAML", null, null);
+		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		
+		Context context = Context.EMPTY_CONTEXT;
+		Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);
+		
+		Fox fox = (Fox) TestObjectLoaderSupplier.loadObject(specURI, diagnosticConsumer, context, progressMonitor);
+		
+		System.out.println("Fox name: " + fox.getName());
 	}
 
 }

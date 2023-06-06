@@ -249,7 +249,7 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getAnimal__Eats__Food() {
+	public EOperation getAnimal__Eats__Food_Food() {
 		return animalEClass.getEOperations().get(0);
 	}
 
@@ -339,7 +339,7 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 		animalEClass = createEClass(ANIMAL);
 		createEAttribute(animalEClass, ANIMAL__GENERIC_ATTRIBUTE);
 		createEAttribute(animalEClass, ANIMAL__NAME);
-		createEOperation(animalEClass, ANIMAL___EATS__FOOD);
+		createEOperation(animalEClass, ANIMAL___EATS__FOOD_FOOD);
 
 		plantEClass = createEClass(PLANT);
 
@@ -416,9 +416,11 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 		initEAttribute(getAnimal_GenericAttribute(), g1, "genericAttribute", null, 0, 1, Animal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnimal_Name(), ecorePackage.getEString(), "name", null, 0, 1, Animal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = initEOperation(getAnimal__Eats__Food(), null, "eats", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getAnimal__Eats__Food_Food(), null, "eats", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(animalEClass_F);
 		addEParameter(op, g1, "food", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(animalEClass_F);
+		addEParameter(op, g1, "appetizer", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(plantEClass, Plant.class, "Plant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

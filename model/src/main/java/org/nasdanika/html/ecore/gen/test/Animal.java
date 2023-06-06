@@ -71,6 +71,6 @@ public interface Animal<F extends Food> extends LivingBeing {
 	 * @model
 	 * @generated
 	 */
-	void eats(F food);
+	void eats(F food, F appetizer);
 
 } // Animal

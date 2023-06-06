@@ -4,10 +4,18 @@ package org.nasdanika.html.ecore.gen.test.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.nasdanika.html.ecore.gen.test.*;
+import org.nasdanika.html.ecore.gen.test.Animal;
+import org.nasdanika.html.ecore.gen.test.Biome;
+import org.nasdanika.html.ecore.gen.test.Food;
+import org.nasdanika.html.ecore.gen.test.Forest;
+import org.nasdanika.html.ecore.gen.test.Fox;
+import org.nasdanika.html.ecore.gen.test.Grass;
+import org.nasdanika.html.ecore.gen.test.Hare;
+import org.nasdanika.html.ecore.gen.test.LivingBeing;
+import org.nasdanika.html.ecore.gen.test.Plant;
+import org.nasdanika.html.ecore.gen.test.TestPackage;
 
 /**
  * <!-- begin-user-doc -->

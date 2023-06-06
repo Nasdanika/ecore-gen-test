@@ -250,7 +250,7 @@ public interface TestPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANIMAL___EATS__FOOD = LIVING_BEING_OPERATION_COUNT + 0;
+	int ANIMAL___EATS__FOOD_FOOD = LIVING_BEING_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Animal</em>' class.
@@ -388,7 +388,7 @@ public interface TestPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HARE___EATS__FOOD = ANIMAL___EATS__FOOD;
+	int HARE___EATS__FOOD_FOOD = ANIMAL___EATS__FOOD_FOOD;
 
 	/**
 	 * The number of operations of the '<em>Hare</em>' class.
@@ -452,7 +452,7 @@ public interface TestPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOX___EATS__FOOD = ANIMAL___EATS__FOOD;
+	int FOX___EATS__FOOD_FOOD = ANIMAL___EATS__FOOD_FOOD;
 
 	/**
 	 * The number of operations of the '<em>Fox</em>' class.
@@ -569,14 +569,14 @@ public interface TestPackage extends EPackage {
 	EAttribute getAnimal_Name();
 
 	/**
-	 * Returns the meta object for the '{@link org.nasdanika.html.ecore.gen.test.Animal#eats(org.nasdanika.html.ecore.gen.test.Food) <em>Eats</em>}' operation.
+	 * Returns the meta object for the '{@link org.nasdanika.html.ecore.gen.test.Animal#eats(org.nasdanika.html.ecore.gen.test.Food, org.nasdanika.html.ecore.gen.test.Food) <em>Eats</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Eats</em>' operation.
-	 * @see org.nasdanika.html.ecore.gen.test.Animal#eats(org.nasdanika.html.ecore.gen.test.Food)
+	 * @see org.nasdanika.html.ecore.gen.test.Animal#eats(org.nasdanika.html.ecore.gen.test.Food, org.nasdanika.html.ecore.gen.test.Food)
 	 * @generated
 	 */
-	EOperation getAnimal__Eats__Food();
+	EOperation getAnimal__Eats__Food_Food();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.html.ecore.gen.test.Plant <em>Plant</em>}'.
@@ -739,7 +739,7 @@ public interface TestPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation ANIMAL___EATS__FOOD = eINSTANCE.getAnimal__Eats__Food();
+		EOperation ANIMAL___EATS__FOOD_FOOD = eINSTANCE.getAnimal__Eats__Food_Food();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.html.ecore.gen.test.impl.PlantImpl <em>Plant</em>}' class.

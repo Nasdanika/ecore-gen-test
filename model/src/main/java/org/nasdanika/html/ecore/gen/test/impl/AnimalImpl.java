@@ -125,12 +125,10 @@ public class AnimalImpl<F extends Food> extends LivingBeingImpl implements Anima
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public void eats(F food) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public void eats(F food, F appetizer) {
+		System.out.println("Yum, tasty " + food + " " + appetizer);
 	}
 
 	/**
@@ -211,8 +209,8 @@ public class AnimalImpl<F extends Food> extends LivingBeingImpl implements Anima
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case TestPackage.ANIMAL___EATS__FOOD:
-				eats((F)arguments.get(0));
+			case TestPackage.ANIMAL___EATS__FOOD_FOOD:
+				eats((F)arguments.get(0), (F)arguments.get(1));
 				return null;
 		}
 		return super.eInvoke(operationID, arguments);

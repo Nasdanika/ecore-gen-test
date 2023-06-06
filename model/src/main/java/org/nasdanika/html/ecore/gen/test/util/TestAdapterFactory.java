@@ -4,12 +4,19 @@ package org.nasdanika.html.ecore.gen.test.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.nasdanika.html.ecore.gen.test.*;
+import org.nasdanika.html.ecore.gen.test.Animal;
+import org.nasdanika.html.ecore.gen.test.Biome;
+import org.nasdanika.html.ecore.gen.test.Food;
+import org.nasdanika.html.ecore.gen.test.Forest;
+import org.nasdanika.html.ecore.gen.test.Fox;
+import org.nasdanika.html.ecore.gen.test.Grass;
+import org.nasdanika.html.ecore.gen.test.Hare;
+import org.nasdanika.html.ecore.gen.test.LivingBeing;
+import org.nasdanika.html.ecore.gen.test.Plant;
+import org.nasdanika.html.ecore.gen.test.TestPackage;
 
 /**
  * <!-- begin-user-doc -->

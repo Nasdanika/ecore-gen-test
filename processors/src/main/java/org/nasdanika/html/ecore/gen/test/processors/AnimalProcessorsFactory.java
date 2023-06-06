@@ -80,7 +80,7 @@ public class AnimalProcessorsFactory {
 	}
 	
 	@EOperationNodeProcessorFactory(
-			operationID = TestPackage.ANIMAL___EATS__FOOD,
+			operationID = TestPackage.ANIMAL___EATS__FOOD_FOOD,
 			label = "Ест",
 			documentation = "Test of operation documentation"
 	)
@@ -103,7 +103,7 @@ public class AnimalProcessorsFactory {
 	}
 	
 	@EParameterNodeProcessorFactory(
-			operationID = TestPackage.ANIMAL___EATS__FOOD,
+			operationID = TestPackage.ANIMAL___EATS__FOOD_FOOD,
 			name = "food",
 			label = "пища",
 			description = "Food which animal eats",
