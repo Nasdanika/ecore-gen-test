@@ -5,7 +5,7 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>ecore-gen-test.ecore</foreignModel>
-  <genPackages prefix="Test" basePackage="org.nasdanika.html.ecore.gen" disposableProviderFactory="true"
+  <genPackages prefix="Test" basePackage="org.nasdanika.models.ecore" disposableProviderFactory="true"
       ecorePackage="ecore-gen-test.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ecore-gen-test.ecore#//Color">
       <genEnumLiterals ecoreEnumLiteral="ecore-gen-test.ecore#//Color/White"/>
@@ -25,7 +25,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ecore-gen-test.ecore#//Animal/name"/>
       <genOperations ecoreOperation="ecore-gen-test.ecore#//Animal/eats">
         <genParameters ecoreParameter="ecore-gen-test.ecore#//Animal/eats/food"/>
-        <genParameters ecoreParameter="ecore-gen-test.ecore#//Animal/eats/appetizer"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="ecore-gen-test.ecore#//Plant"/>

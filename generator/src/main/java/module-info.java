@@ -1,6 +1,6 @@
-module org.nasdanika.html.ecore.gen.test.generator {
+module org.nasdanika.models.ecore.test.generator {
 		
-	requires transitive org.nasdanika.html.ecore.gen.test.processors;
+	requires transitive org.nasdanika.models.ecore.test.processors;
 	requires org.eclipse.emf.ecore.xmi;
 	
 }

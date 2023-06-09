@@ -22,9 +22,6 @@
       <eParameters name="food">
         <eGenericType eTypeParameter="#//Animal/F"/>
       </eParameters>
-      <eParameters name="appetizer">
-        <eGenericType eTypeParameter="#//Animal/F"/>
-      </eParameters>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="genericAttribute">
       <eGenericType eTypeParameter="#//Animal/F"/>

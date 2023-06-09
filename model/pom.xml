@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.nasdanika.html.ecore.gen.tests</groupId>
-		<version>2023.4.1</version>
+		<groupId>org.nasdanika.models.ecore.tests</groupId>
+		<version>2023.7.0</version>
 		<artifactId>parent</artifactId>
 		<relativePath>..</relativePath>
 	</parent>
@@ -15,7 +15,7 @@
 		<dependency>
 		    <groupId>org.nasdanika.core</groupId>
 		    <artifactId>emf</artifactId>
-		    <version>${project.version}</version>
+		    <version>${core.version}</version>
 		</dependency> 		
 	</dependencies>
 </project>

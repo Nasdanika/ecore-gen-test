@@ -10,7 +10,7 @@
       <!-- @generated ecore-gen-test -->
       <package
             uri="ecore://test.ecore-gen.html.nasdanika.org"
-            class="org.nasdanika.html.ecore.gen.test.TestPackage"
+            class="org.nasdanika.models.ecore.test.TestPackage"
             genModel="model/ecore-gen-test.genmodel"/>
    </extension>
 

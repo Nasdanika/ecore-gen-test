@@ -1,9 +1,9 @@
-module org.nasdanika.html.ecore.gen.test.processors {
+module org.nasdanika.models.ecore.test.processors {
 		
-	requires transitive org.nasdanika.html.ecore.gen.test.model;
-	requires transitive org.nasdanika.html.ecore.gen;
+	requires transitive org.nasdanika.models.ecore.test.model;
+	requires transitive org.nasdanika.models.ecore.graph;
 	
-	exports org.nasdanika.html.ecore.gen.test.processors;
-	opens org.nasdanika.html.ecore.gen.test.processors; // For loading resources
+	exports org.nasdanika.models.ecore.test.processors;
+	opens org.nasdanika.models.ecore.test.processors; // For loading resources
 	
 }
