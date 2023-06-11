@@ -87,13 +87,22 @@ public interface TestPackage extends EPackage {
 	int LIVING_BEING_FEATURE_COUNT = 1;
 
 	/**
+	 * The operation id for the '<em>Communicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIVING_BEING___COMMUNICATE = 0;
+
+	/**
 	 * The number of operations of the '<em>Living Being</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIVING_BEING_OPERATION_COUNT = 0;
+	int LIVING_BEING_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.ecore.test.impl.BiomeImpl <em>Biome</em>}' class.
@@ -244,6 +253,15 @@ public interface TestPackage extends EPackage {
 	int ANIMAL_FEATURE_COUNT = LIVING_BEING_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Communicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANIMAL___COMMUNICATE = LIVING_BEING___COMMUNICATE;
+
+	/**
 	 * The operation id for the '<em>Eats</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -290,6 +308,15 @@ public interface TestPackage extends EPackage {
 	int PLANT_FEATURE_COUNT = LIVING_BEING_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Communicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLANT___COMMUNICATE = LIVING_BEING___COMMUNICATE;
+
+	/**
 	 * The number of operations of the '<em>Plant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -325,6 +352,15 @@ public interface TestPackage extends EPackage {
 	 * @ordered
 	 */
 	int GRASS_FEATURE_COUNT = PLANT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Communicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRASS___COMMUNICATE = PLANT___COMMUNICATE;
 
 	/**
 	 * The number of operations of the '<em>Grass</em>' class.
@@ -380,6 +416,15 @@ public interface TestPackage extends EPackage {
 	 * @ordered
 	 */
 	int HARE_FEATURE_COUNT = ANIMAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Communicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HARE___COMMUNICATE = ANIMAL___COMMUNICATE;
 
 	/**
 	 * The operation id for the '<em>Eats</em>' operation.
@@ -455,13 +500,22 @@ public interface TestPackage extends EPackage {
 	int FOX___EATS__FOOD = ANIMAL___EATS__FOOD;
 
 	/**
+	 * The operation id for the '<em>Communicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOX___COMMUNICATE = ANIMAL_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Fox</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FOX_OPERATION_COUNT = ANIMAL_OPERATION_COUNT + 0;
+	int FOX_OPERATION_COUNT = ANIMAL_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.ecore.test.Color <em>Color</em>}' enum.
@@ -494,6 +548,16 @@ public interface TestPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLivingBeing_Color();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.models.ecore.test.LivingBeing#communicate() <em>Communicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Communicate</em>' operation.
+	 * @see org.nasdanika.models.ecore.test.LivingBeing#communicate()
+	 * @generated
+	 */
+	EOperation getLivingBeing__Communicate();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.ecore.test.Biome <em>Biome</em>}'.
@@ -619,6 +683,16 @@ public interface TestPackage extends EPackage {
 	EClass getFox();
 
 	/**
+	 * Returns the meta object for the '{@link org.nasdanika.models.ecore.test.Fox#communicate() <em>Communicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Communicate</em>' operation.
+	 * @see org.nasdanika.models.ecore.test.Fox#communicate()
+	 * @generated
+	 */
+	EOperation getFox__Communicate();
+
+	/**
 	 * Returns the meta object for enum '{@link org.nasdanika.models.ecore.test.Color <em>Color</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -668,6 +742,14 @@ public interface TestPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LIVING_BEING__COLOR = eINSTANCE.getLivingBeing_Color();
+
+		/**
+		 * The meta object literal for the '<em><b>Communicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LIVING_BEING___COMMUNICATE = eINSTANCE.getLivingBeing__Communicate();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.ecore.test.impl.BiomeImpl <em>Biome</em>}' class.
@@ -780,6 +862,14 @@ public interface TestPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FOX = eINSTANCE.getFox();
+
+		/**
+		 * The meta object literal for the '<em><b>Communicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation FOX___COMMUNICATE = eINSTANCE.getFox__Communicate();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.ecore.test.Color <em>Color</em>}' enum.

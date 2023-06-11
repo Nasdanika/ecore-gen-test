@@ -13,6 +13,7 @@
     </genEnums>
     <genClasses ecoreClass="ecore-gen-test.ecore#//LivingBeing">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ecore-gen-test.ecore#//LivingBeing/color"/>
+      <genOperations ecoreOperation="ecore-gen-test.ecore#//LivingBeing/communicate"/>
     </genClasses>
     <genClasses ecoreClass="ecore-gen-test.ecore#//Biome">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ecore-gen-test.ecore#//Biome/livingBeings"/>
@@ -30,6 +31,8 @@
     <genClasses ecoreClass="ecore-gen-test.ecore#//Plant"/>
     <genClasses ecoreClass="ecore-gen-test.ecore#//Grass"/>
     <genClasses ecoreClass="ecore-gen-test.ecore#//Hare"/>
-    <genClasses ecoreClass="ecore-gen-test.ecore#//Fox"/>
+    <genClasses ecoreClass="ecore-gen-test.ecore#//Fox">
+      <genOperations ecoreOperation="ecore-gen-test.ecore#//Fox/communicate"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

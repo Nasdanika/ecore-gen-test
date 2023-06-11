@@ -2,8 +2,10 @@
  */
 package org.nasdanika.models.ecore.test.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -91,6 +93,17 @@ public class LivingBeingImpl extends MinimalEObjectImpl.Container implements Liv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void communicate() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -142,6 +155,21 @@ public class LivingBeingImpl extends MinimalEObjectImpl.Container implements Liv
 				return color != COLOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case TestPackage.LIVING_BEING___COMMUNICATE:
+				communicate();
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

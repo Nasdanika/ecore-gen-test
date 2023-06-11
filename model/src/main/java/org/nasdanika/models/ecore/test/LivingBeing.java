@@ -46,4 +46,12 @@ public interface LivingBeing extends EObject {
 	 */
 	void setColor(Color value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void communicate();
+
 } // LivingBeing

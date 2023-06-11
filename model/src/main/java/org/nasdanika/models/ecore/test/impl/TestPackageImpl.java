@@ -185,6 +185,15 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getLivingBeing__Communicate() {
+		return livingBeingEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getBiome() {
 		return biomeEClass;
 	}
@@ -293,6 +302,15 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getFox__Communicate() {
+		return foxEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getColor() {
 		return colorEEnum;
 	}
@@ -327,6 +345,7 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 		// Create classes and their features
 		livingBeingEClass = createEClass(LIVING_BEING);
 		createEAttribute(livingBeingEClass, LIVING_BEING__COLOR);
+		createEOperation(livingBeingEClass, LIVING_BEING___COMMUNICATE);
 
 		biomeEClass = createEClass(BIOME);
 		createEReference(biomeEClass, BIOME__LIVING_BEINGS);
@@ -347,6 +366,7 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 		hareEClass = createEClass(HARE);
 
 		foxEClass = createEClass(FOX);
+		createEOperation(foxEClass, FOX___COMMUNICATE);
 
 		// Create enums
 		colorEEnum = createEEnum(COLOR);
@@ -403,6 +423,8 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 		initEClass(livingBeingEClass, LivingBeing.class, "LivingBeing", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLivingBeing_Color(), this.getColor(), "color", null, 0, 1, LivingBeing.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEOperation(getLivingBeing__Communicate(), null, "communicate", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(biomeEClass, Biome.class, "Biome", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBiome_LivingBeings(), this.getLivingBeing(), null, "livingBeings", null, 0, -1, Biome.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -426,6 +448,8 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 		initEClass(hareEClass, Hare.class, "Hare", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(foxEClass, Fox.class, "Fox", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getFox__Communicate(), null, "communicate", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(colorEEnum, Color.class, "Color");

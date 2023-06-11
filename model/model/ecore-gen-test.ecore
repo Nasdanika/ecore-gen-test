@@ -6,6 +6,7 @@
     <eLiterals name="Brown" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LivingBeing">
+    <eOperations name="communicate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="#//Color"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Biome">
@@ -37,6 +38,7 @@
     <eGenericSuperTypes eClassifier="#//Food"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Fox">
+    <eOperations name="communicate"/>
     <eGenericSuperTypes eClassifier="#//Animal">
       <eTypeArguments eClassifier="#//Hare"/>
     </eGenericSuperTypes>

@@ -14,4 +14,12 @@ package org.nasdanika.models.ecore.test;
  * @generated
  */
 public interface Fox extends Animal<Hare> {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void communicate();
 } // Fox
