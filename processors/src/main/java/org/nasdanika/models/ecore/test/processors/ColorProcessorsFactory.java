@@ -15,8 +15,9 @@ import org.nasdanika.models.ecore.graph.processors.EClassifierNodeProcessorFacto
 import org.nasdanika.models.ecore.graph.processors.EEnumLiteralNodeProcessor;
 import org.nasdanika.models.ecore.graph.processors.EEnumLiteralNodeProcessorFactory;
 import org.nasdanika.models.ecore.graph.processors.EEnumNodeProcessor;
+import org.nasdanika.models.ecore.test.TestPackage;
 
-@EClassifierNodeProcessorFactory(name = "Color")
+@EClassifierNodeProcessorFactory(classifierID = TestPackage.COLOR)
 public class ColorProcessorsFactory {
 	
 	private Context context = Context.EMPTY_CONTEXT; // TODO - from constructor

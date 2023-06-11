@@ -14,14 +14,18 @@ import org.nasdanika.html.model.app.graph.WidgetFactory;
 import org.nasdanika.models.ecore.graph.processors.EAttributeNodeProcessor;
 import org.nasdanika.models.ecore.graph.processors.EClassNodeProcessor;
 import org.nasdanika.models.ecore.graph.processors.EClassifierNodeProcessorFactory;
+import org.nasdanika.models.ecore.graph.processors.EGenericTypeNodeProcessor;
 import org.nasdanika.models.ecore.graph.processors.EOperationNodeProcessor;
 import org.nasdanika.models.ecore.graph.processors.EOperationNodeProcessorFactory;
 import org.nasdanika.models.ecore.graph.processors.EParameterNodeProcessor;
 import org.nasdanika.models.ecore.graph.processors.EParameterNodeProcessorFactory;
 import org.nasdanika.models.ecore.graph.processors.EStructuralFeatureNodeProcessorFactory;
+import org.nasdanika.models.ecore.graph.processors.ETypeParameterBoundNodeProcessorFactory;
+import org.nasdanika.models.ecore.graph.processors.ETypeParameterNodeProcessor;
+import org.nasdanika.models.ecore.graph.processors.ETypeParameterNodeProcessorFactory;
 import org.nasdanika.models.ecore.test.TestPackage;
 
-@EClassifierNodeProcessorFactory(name = "Animal")
+@EClassifierNodeProcessorFactory(classifierID = TestPackage.ANIMAL)
 public class AnimalProcessorsFactory {
 	
 	private Context context = Context.EMPTY_CONTEXT; // TODO - from constructor
@@ -115,6 +119,54 @@ public class AnimalProcessorsFactory {
 			BiConsumer<Label, ProgressMonitor> labelConfigurator,
 			ProgressMonitor progressMonitor) {		
 		return new EParameterNodeProcessor(config, context, prototypeProvider) {
+			
+			@Override
+			protected void configureLabel(EObject eObject, Label label, ProgressMonitor progressMonitor) {
+				super.configureLabel(eObject, label, progressMonitor);
+				if (labelConfigurator != null) {
+					labelConfigurator.accept(label, progressMonitor);
+				}
+			}
+			
+		};
+	}
+	
+	@ETypeParameterNodeProcessorFactory(
+			name = "F",
+			label = "Пища",
+			description = "Food which animal eats",
+			documentation = "Test of type parameter documentation"
+	)
+	public ETypeParameterNodeProcessor createAnimalFoodTypeParameterProcessor(
+			NodeProcessorConfig<Object, WidgetFactory, WidgetFactory, Registry<URI>> config, 
+			java.util.function.Function<ProgressMonitor, Action> prototypeProvider,
+			BiConsumer<Label, ProgressMonitor> labelConfigurator,
+			ProgressMonitor progressMonitor) {		
+		return new ETypeParameterNodeProcessor(config, context, prototypeProvider) {
+			
+			@Override
+			protected void configureLabel(EObject eObject, Label label, ProgressMonitor progressMonitor) {
+				super.configureLabel(eObject, label, progressMonitor);
+				if (labelConfigurator != null) {
+					labelConfigurator.accept(label, progressMonitor);
+				}
+			}
+			
+		};
+	}
+	
+	@ETypeParameterBoundNodeProcessorFactory(
+			typeParameterName = "F",
+			label = "Hmmm",
+			description = "Hmmm description",
+			documentation = "Hmm documentation"
+	)
+	public EGenericTypeNodeProcessor createAnimalFoodTypeParameterBoundProcessor(
+			NodeProcessorConfig<Object, WidgetFactory, WidgetFactory, Registry<URI>> config, 
+			java.util.function.Function<ProgressMonitor, Action> prototypeProvider,
+			BiConsumer<Label, ProgressMonitor> labelConfigurator,
+			ProgressMonitor progressMonitor) {			
+		return new EGenericTypeNodeProcessor(config, context, prototypeProvider) {
 			
 			@Override
 			protected void configureLabel(EObject eObject, Label label, ProgressMonitor progressMonitor) {
