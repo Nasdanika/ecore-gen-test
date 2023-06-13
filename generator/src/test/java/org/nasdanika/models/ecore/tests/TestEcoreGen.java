@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.DiagnosticException;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -21,6 +22,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.jgrapht.Graph;
+import org.jgrapht.graph.SimpleDirectedGraph;
+import org.jgrapht.traverse.DepthFirstIterator;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.Diagnostic;
@@ -29,13 +33,14 @@ import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.NullProgressMonitor;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.graph.Connection;
 import org.nasdanika.graph.Element;
+import org.nasdanika.graph.JGraphAdapter;
+import org.nasdanika.graph.Node;
 import org.nasdanika.graph.emf.EObjectGraphFactory;
 import org.nasdanika.graph.emf.EObjectNode;
 import org.nasdanika.graph.processor.ProcessorInfo;
 import org.nasdanika.graph.processor.emf.EObjectNodeProcessorReflectiveFactory;
-import org.nasdanika.models.ecore.graph.EcoreGraphFactory;
-import org.nasdanika.models.ecore.graph.processors.EcoreNodeProcessorFactory;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.Label;
 import org.nasdanika.html.model.app.Link;
@@ -44,6 +49,9 @@ import org.nasdanika.html.model.app.graph.Registry;
 import org.nasdanika.html.model.app.graph.URINodeProcessor;
 import org.nasdanika.html.model.app.graph.WidgetFactory;
 import org.nasdanika.html.model.app.graph.emf.EObjectReflectiveProcessorFactory;
+import org.nasdanika.models.ecore.graph.EClassNode;
+import org.nasdanika.models.ecore.graph.EcoreGraphFactory;
+import org.nasdanika.models.ecore.graph.processors.EcoreNodeProcessorFactory;
 import org.nasdanika.models.ecore.test.Fox;
 import org.nasdanika.models.ecore.test.TestPackage;
 import org.nasdanika.models.ecore.test.processors.EcoreGenTestProcessorsFactory;
@@ -224,6 +232,44 @@ public class TestEcoreGen {
 		Fox fox = (Fox) TestObjectLoaderSupplier.loadObject(specURI, diagnosticConsumer, context, progressMonitor);
 		
 		System.out.println("Fox name: " + fox.getName());
+	}
+	
+	@Test
+	public void testJGraphTAdapter() {
+		List<EPackage> ePackages = Arrays.asList(EcorePackage.eINSTANCE, TestPackage.eINSTANCE);
+		EObjectGraphFactory graphFactory = new EcoreGraphFactory();
+		ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
+		List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
+		
+		record EdgeRecord(String source, String target, Collection<Connection> edge) {};
+		
+		Graph<String, EdgeRecord> graph = new SimpleDirectedGraph<>(EdgeRecord.class);
+		JGraphAdapter<String, EdgeRecord> adapter = new JGraphAdapter<String, EdgeRecord>(graph, true, true) {
+
+			@Override
+			protected String createVertex(Node node) {
+				if (node instanceof EClassNode) {
+					EClass eClass = ((EClassNode) node).getTarget();
+					return eClass.getName() + "@" + eClass.getEPackage().getNsURI();
+				}
+				return null;
+			}
+			
+			@Override
+			protected EdgeRecord createEdge(String source, String target, Collection<Connection> connections) {
+				return new EdgeRecord(source, target, connections);
+			}
+			
+		};
+		
+		for (EObjectNode node: nodes) {
+			node.accept(adapter);
+		}
+		
+		DepthFirstIterator<String, EdgeRecord> depthFirstIterator = new DepthFirstIterator<>(graph);		
+		depthFirstIterator.forEachRemaining(System.out::println);
+		
+		
 	}
 
 }
