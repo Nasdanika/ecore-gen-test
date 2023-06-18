@@ -2,12 +2,14 @@ package org.nasdanika.models.ecore.tests;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.module.ModuleDescriptor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -267,9 +269,17 @@ public class TestEcoreGen {
 		}
 		
 		DepthFirstIterator<String, EdgeRecord> depthFirstIterator = new DepthFirstIterator<>(graph);		
-		depthFirstIterator.forEachRemaining(System.out::println);
-		
+		depthFirstIterator.forEachRemaining(System.out::println);	
+	}
+	
+	@Test 
+	public void testModules() {
+		Module module = getClass().getModule();
+		ModuleDescriptor descriptor = module.getDescriptor();
+		Set<String> packages = module.getPackages();
+		System.out.println(packages);
+		System.out.println(descriptor.requires());
 		
 	}
-
+	
 }
