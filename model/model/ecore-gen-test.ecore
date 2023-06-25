@@ -5,17 +5,17 @@
     <eLiterals name="White"/>
     <eLiterals name="Brown" value="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LivingBeing">
+  <eClassifiers xsi:type="ecore:EClass" name="LivingBeing" abstract="true" interface="true">
     <eOperations name="communicate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="#//Color"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Biome">
+  <eClassifiers xsi:type="ecore:EClass" name="Biome" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="livingBeings" upperBound="-1"
         eType="#//LivingBeing" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Forest" eSuperTypes="#//Biome"/>
   <eClassifiers xsi:type="ecore:EClass" name="Food" abstract="true" interface="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Animal" eSuperTypes="#//LivingBeing">
+  <eClassifiers xsi:type="ecore:EClass" name="Animal" abstract="true" eSuperTypes="#//LivingBeing">
     <eTypeParameters name="F">
       <eBounds eClassifier="#//Food"/>
     </eTypeParameters>

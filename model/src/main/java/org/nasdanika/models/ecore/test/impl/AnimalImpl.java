@@ -11,7 +11,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.nasdanika.models.ecore.test.Animal;
+import org.nasdanika.models.ecore.test.Color;
 import org.nasdanika.models.ecore.test.Food;
 import org.nasdanika.models.ecore.test.TestPackage;
 
@@ -23,13 +26,34 @@ import org.nasdanika.models.ecore.test.TestPackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.nasdanika.models.ecore.test.impl.AnimalImpl#getColor <em>Color</em>}</li>
  *   <li>{@link org.nasdanika.models.ecore.test.impl.AnimalImpl#getGenericAttribute <em>Generic Attribute</em>}</li>
  *   <li>{@link org.nasdanika.models.ecore.test.impl.AnimalImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AnimalImpl<F extends Food> extends LivingBeingImpl implements Animal<F> {
+public abstract class AnimalImpl<F extends Food> extends MinimalEObjectImpl.Container implements Animal<F> {
+	/**
+	 * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Color COLOR_EDEFAULT = Color.WHITE;
+
+	/**
+	 * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected Color color = COLOR_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getGenericAttribute() <em>Generic Attribute</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -77,6 +101,27 @@ public class AnimalImpl<F extends Food> extends LivingBeingImpl implements Anima
 	@Override
 	protected EClass eStaticClass() {
 		return TestPackage.Literals.ANIMAL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Color getColor() {
+		return color;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setColor(Color newColor) {
+		Color oldColor = color;
+		color = newColor == null ? COLOR_EDEFAULT : newColor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestPackage.ANIMAL__COLOR, oldColor, color));
 	}
 
 	/**
@@ -137,9 +182,22 @@ public class AnimalImpl<F extends Food> extends LivingBeingImpl implements Anima
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void communicate() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case TestPackage.ANIMAL__COLOR:
+				return getColor();
 			case TestPackage.ANIMAL__GENERIC_ATTRIBUTE:
 				return getGenericAttribute();
 			case TestPackage.ANIMAL__NAME:
@@ -157,6 +215,9 @@ public class AnimalImpl<F extends Food> extends LivingBeingImpl implements Anima
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case TestPackage.ANIMAL__COLOR:
+				setColor((Color)newValue);
+				return;
 			case TestPackage.ANIMAL__GENERIC_ATTRIBUTE:
 				setGenericAttribute((F)newValue);
 				return;
@@ -175,6 +236,9 @@ public class AnimalImpl<F extends Food> extends LivingBeingImpl implements Anima
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case TestPackage.ANIMAL__COLOR:
+				setColor(COLOR_EDEFAULT);
+				return;
 			case TestPackage.ANIMAL__GENERIC_ATTRIBUTE:
 				setGenericAttribute((F)null);
 				return;
@@ -193,6 +257,8 @@ public class AnimalImpl<F extends Food> extends LivingBeingImpl implements Anima
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case TestPackage.ANIMAL__COLOR:
+				return color != COLOR_EDEFAULT;
 			case TestPackage.ANIMAL__GENERIC_ATTRIBUTE:
 				return genericAttribute != null;
 			case TestPackage.ANIMAL__NAME:
@@ -213,6 +279,9 @@ public class AnimalImpl<F extends Food> extends LivingBeingImpl implements Anima
 			case TestPackage.ANIMAL___EATS__FOOD:
 				eats((F)arguments.get(0));
 				return null;
+			case TestPackage.ANIMAL___COMMUNICATE:
+				communicate();
+				return null;
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -227,7 +296,9 @@ public class AnimalImpl<F extends Food> extends LivingBeingImpl implements Anima
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (genericAttribute: ");
+		result.append(" (color: ");
+		result.append(color);
+		result.append(", genericAttribute: ");
 		result.append(genericAttribute);
 		result.append(", name: ");
 		result.append(name);

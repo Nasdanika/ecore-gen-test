@@ -16,7 +16,7 @@ package org.nasdanika.models.ecore.test;
  * </ul>
  *
  * @see org.nasdanika.models.ecore.test.TestPackage#getAnimal()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Animal<F extends Food> extends LivingBeing {

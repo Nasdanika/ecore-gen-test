@@ -59,10 +59,10 @@ public interface TestPackage extends EPackage {
 	TestPackage eINSTANCE = org.nasdanika.models.ecore.test.impl.TestPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.ecore.test.impl.LivingBeingImpl <em>Living Being</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.ecore.test.LivingBeing <em>Living Being</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.ecore.test.impl.LivingBeingImpl
+	 * @see org.nasdanika.models.ecore.test.LivingBeing
 	 * @see org.nasdanika.models.ecore.test.impl.TestPackageImpl#getLivingBeing()
 	 * @generated
 	 */
@@ -726,10 +726,10 @@ public interface TestPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.ecore.test.impl.LivingBeingImpl <em>Living Being</em>}' class.
+		 * The meta object literal for the '{@link org.nasdanika.models.ecore.test.LivingBeing <em>Living Being</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.ecore.test.impl.LivingBeingImpl
+		 * @see org.nasdanika.models.ecore.test.LivingBeing
 		 * @see org.nasdanika.models.ecore.test.impl.TestPackageImpl#getLivingBeing()
 		 * @generated
 		 */

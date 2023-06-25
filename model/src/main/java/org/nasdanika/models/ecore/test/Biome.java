@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.nasdanika.models.ecore.test.TestPackage#getBiome()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Biome extends EObject {

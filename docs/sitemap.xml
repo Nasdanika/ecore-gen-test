@@ -2,237 +2,262 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" >
   <url>
     <loc>https://architecture.nasdanika.org/glossary.html</loc>
-    <lastmod>2023-06-25T11:15:44.672-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.621-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.448-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.498-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/search.html</loc>
-    <lastmod>2023-06-25T11:15:44.669-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.618-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/classifiers.html</loc>
-    <lastmod>2023-06-25T11:15:44.666-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.616-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.461-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.501-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/attributes.html</loc>
-    <lastmod>2023-06-25T11:15:44.484-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.510-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.482-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.506-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/inheritance.html</loc>
-    <lastmod>2023-06-25T11:15:44.545-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.546-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/operations.html</loc>
-    <lastmod>2023-06-25T11:15:44.556-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.548-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/references/eOperations/eats-1/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.500-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.528-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/references/eOperations/eats-1/parameters.html</loc>
-    <lastmod>2023-06-25T11:15:44.507-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.530-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/references/eOperations/eats-1/references/eParameters/food/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.523-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.534-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/references/eStructuralFeatures/name/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.495-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.515-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/references/eTypeParameters/F/bounds.html</loc>
-    <lastmod>2023-06-25T11:15:44.538-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.540-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/references/eTypeParameters/F/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.533-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.538-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/references/eTypeParameters/F/references/eBounds/0/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.543-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.544-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Animal/type-parameters.html</loc>
-    <lastmod>2023-06-25T11:15:44.559-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.550-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Biome/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.562-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.552-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Biome/inheritance.html</loc>
-    <lastmod>2023-06-25T11:15:44.568-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.556-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Biome/references.html</loc>
-    <lastmod>2023-06-25T11:15:44.565-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.554-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Color/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.572-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.560-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Color/references/eLiterals/White/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.590-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.564-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Food/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.593-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.566-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Food/inheritance.html</loc>
-    <lastmod>2023-06-25T11:15:44.595-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.568-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Forest/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.597-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.570-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Forest/inheritance.html</loc>
-    <lastmod>2023-06-25T11:15:44.598-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.572-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Forest/load-specification.html</loc>
+    <lastmod>2023-06-25T14:46:24.571-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Forest/references.html</loc>
-    <lastmod>2023-06-25T11:15:44.600-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.575-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Fox/attributes.html</loc>
-    <lastmod>2023-06-25T11:15:44.604-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.580-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Fox/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.602-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.577-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Fox/inheritance.html</loc>
-    <lastmod>2023-06-25T11:15:44.609-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.581-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Fox/load-specification.html</loc>
+    <lastmod>2023-06-25T14:46:24.578-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Fox/operations.html</loc>
-    <lastmod>2023-06-25T11:15:44.613-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.583-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Grass/attributes.html</loc>
-    <lastmod>2023-06-25T11:15:44.619-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.587-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Grass/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.617-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.584-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Grass/inheritance.html</loc>
-    <lastmod>2023-06-25T11:15:44.622-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.588-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Grass/load-specification.html</loc>
+    <lastmod>2023-06-25T14:46:24.586-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Grass/operations.html</loc>
-    <lastmod>2023-06-25T11:15:44.624-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.590-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Hare/attributes.html</loc>
-    <lastmod>2023-06-25T11:15:44.630-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.596-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Hare/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.627-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.593-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Hare/inheritance.html</loc>
-    <lastmod>2023-06-25T11:15:44.632-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.598-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Hare/load-specification.html</loc>
+    <lastmod>2023-06-25T14:46:24.595-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Hare/operations.html</loc>
-    <lastmod>2023-06-25T11:15:44.635-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.599-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/LivingBeing/attributes.html</loc>
-    <lastmod>2023-06-25T11:15:44.641-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.603-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/LivingBeing/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.639-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.602-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/LivingBeing/inheritance.html</loc>
-    <lastmod>2023-06-25T11:15:44.650-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.606-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/LivingBeing/operations.html</loc>
-    <lastmod>2023-06-25T11:15:44.643-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.605-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Plant/attributes.html</loc>
-    <lastmod>2023-06-25T11:15:44.659-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.612-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Plant/index.html</loc>
-    <lastmod>2023-06-25T11:15:44.657-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.609-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Plant/inheritance.html</loc>
-    <lastmod>2023-06-25T11:15:44.662-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.613-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Plant/load-specification.html</loc>
+    <lastmod>2023-06-25T14:46:24.610-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://architecture.nasdanika.org/test/references/eClassifiers/Plant/operations.html</loc>
-    <lastmod>2023-06-25T11:15:44.665-04:00</lastmod>
+    <lastmod>2023-06-25T14:46:24.615-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

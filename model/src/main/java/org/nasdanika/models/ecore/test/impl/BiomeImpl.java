@@ -32,7 +32,7 @@ import org.nasdanika.models.ecore.test.TestPackage;
  *
  * @generated
  */
-public class BiomeImpl extends MinimalEObjectImpl.Container implements Biome {
+public abstract class BiomeImpl extends MinimalEObjectImpl.Container implements Biome {
 	/**
 	 * The cached value of the '{@link #getLivingBeings() <em>Living Beings</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

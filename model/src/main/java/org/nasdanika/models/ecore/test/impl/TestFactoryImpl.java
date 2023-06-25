@@ -56,10 +56,7 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case TestPackage.LIVING_BEING: return createLivingBeing();
-			case TestPackage.BIOME: return createBiome();
 			case TestPackage.FOREST: return createForest();
-			case TestPackage.ANIMAL: return createAnimal();
 			case TestPackage.PLANT: return createPlant();
 			case TestPackage.GRASS: return createGrass();
 			case TestPackage.HARE: return createHare();
@@ -104,39 +101,9 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LivingBeing createLivingBeing() {
-		LivingBeingImpl livingBeing = new LivingBeingImpl();
-		return livingBeing;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Biome createBiome() {
-		BiomeImpl biome = new BiomeImpl();
-		return biome;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Forest createForest() {
 		ForestImpl forest = new ForestImpl();
 		return forest;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public <F extends Food> Animal<F> createAnimal() {
-		AnimalImpl<F> animal = new AnimalImpl<F>();
-		return animal;
 	}
 
 	/**

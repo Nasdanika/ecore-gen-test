@@ -22,24 +22,6 @@ public interface TestFactory extends EFactory {
 	TestFactory eINSTANCE = org.nasdanika.models.ecore.test.impl.TestFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Living Being</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Living Being</em>'.
-	 * @generated
-	 */
-	LivingBeing createLivingBeing();
-
-	/**
-	 * Returns a new object of class '<em>Biome</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Biome</em>'.
-	 * @generated
-	 */
-	Biome createBiome();
-
-	/**
 	 * Returns a new object of class '<em>Forest</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -47,15 +29,6 @@ public interface TestFactory extends EFactory {
 	 * @generated
 	 */
 	Forest createForest();
-
-	/**
-	 * Returns a new object of class '<em>Animal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Animal</em>'.
-	 * @generated
-	 */
-	<F extends Food> Animal<F> createAnimal();
 
 	/**
 	 * Returns a new object of class '<em>Plant</em>'.

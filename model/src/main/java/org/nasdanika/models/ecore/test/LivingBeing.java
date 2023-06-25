@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.nasdanika.models.ecore.test.TestPackage#getLivingBeing()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface LivingBeing extends EObject {
