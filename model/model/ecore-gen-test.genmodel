@@ -2,8 +2,8 @@
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ecore-gen-test-model/src/main/java" modelPluginID="ecore-gen-test-model"
     modelName="Ecore-gen-test" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
-    operationReflection="true" importOrganizing="true">
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" suppressGenModelAnnotations="false"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>ecore-gen-test.ecore</foreignModel>
   <genPackages prefix="Test" basePackage="org.nasdanika.models.ecore" disposableProviderFactory="true"
       ecorePackage="ecore-gen-test.ecore#/">

@@ -458,6 +458,51 @@ public class TestPackageImpl extends EPackageImpl implements TestPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/GenModel
+		createGenModelAnnotations();
+		// urn:org.nasdanika
+		createUrnorgAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/GenModel</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGenModelAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/GenModel";
+		addAnnotation
+		  (hareEClass,
+		   source,
+		   new String[] {
+			   "documentation", "\u0417\u0430\u0439\u043a\u0430-\u043f\u043e\u043f\u0440\u044b\u0433\u0430\u0439\u043a\u0430"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>urn:org.nasdanika</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createUrnorgAnnotations() {
+		String source = "urn:org.nasdanika";
+		addAnnotation
+		  (hareEClass,
+		   source,
+		   new String[] {
+			   "icon", "https://img.icons8.com/fluency-systems-regular/16/rabbit.svg",
+			   "label", "\u0417\u0430\u0439\u043a\u0430"
+		   });
+		addAnnotation
+		  (getFox__Communicate(),
+		   source,
+		   new String[] {
+			   "description", "\u041b\u0438\u0441\u0430 \u0442\u044f\u0432\u043a\u0430\u044f\u0435\u0442"
+		   });
 	}
 
 } //TestPackageImpl
