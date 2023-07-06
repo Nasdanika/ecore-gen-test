@@ -37,7 +37,7 @@ import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.graph.Connection;
 import org.nasdanika.graph.Element;
-import org.nasdanika.graph.JGraphAdapter;
+import org.nasdanika.graph.JGraphTAdapter;
 import org.nasdanika.graph.Node;
 import org.nasdanika.graph.emf.EObjectGraphFactory;
 import org.nasdanika.graph.emf.EObjectNode;
@@ -70,7 +70,7 @@ public class TestEcoreGen {
 	@Test
 	public void testGraphEcoreDoc() throws IOException, DiagnosticException {
 		List<EPackage> ePackages = Arrays.asList(EcorePackage.eINSTANCE, TestPackage.eINSTANCE);
-		EObjectGraphFactory graphFactory = new EcoreGraphFactory();
+		EObjectGraphFactory graphFactory = new EcoreGraphFactory(true);
 		ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
 		List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
 		
@@ -239,20 +239,20 @@ public class TestEcoreGen {
 	@Test
 	public void testJGraphTAdapter() {
 		List<EPackage> ePackages = Arrays.asList(EcorePackage.eINSTANCE, TestPackage.eINSTANCE);
-		EObjectGraphFactory graphFactory = new EcoreGraphFactory();
+		EObjectGraphFactory graphFactory = new EcoreGraphFactory(true);
 		ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
 		List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
 		
 		record EdgeRecord(String source, String target, Collection<Connection> edge) {};
 		
 		Graph<String, EdgeRecord> graph = new SimpleDirectedGraph<>(EdgeRecord.class);
-		JGraphAdapter<String, EdgeRecord> adapter = new JGraphAdapter<String, EdgeRecord>(graph, true, true) {
+		JGraphTAdapter<String, EdgeRecord> adapter = new JGraphTAdapter<String, EdgeRecord>(graph, true, true) {
 
 			@Override
 			protected String createVertex(Node node) {
 				if (node instanceof EClassNode) {
 					EClass eClass = ((EClassNode) node).getTarget();
-					return eClass.getName() + "@" + eClass.getEPackage().getNsURI();
+					return "["  + Thread.currentThread().getName() + "] " + eClass.getName() + "@" + eClass.getEPackage().getNsURI();
 				}
 				return null;
 			}
