@@ -73,4 +73,7 @@ public class EcoreGenTestProcessorsFactory {
 	@Factory
 	public final ColorProcessorsFactory colorProcessorsFactory = new ColorProcessorsFactory(); // TODO - in constructor, context
 
+	@Factory
+	public final FoxProcessorsFactory foxProcessorsFactory = new FoxProcessorsFactory(); // TODO - in constructor, context
+
 }

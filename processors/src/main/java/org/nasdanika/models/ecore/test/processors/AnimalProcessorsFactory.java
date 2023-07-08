@@ -80,6 +80,11 @@ public class AnimalProcessorsFactory {
 				}
 			}
 			
+			@Override
+			public String getLoadDescription() {
+				return "Some description for animal name load";
+			}
+			
 		};
 	}
 	
@@ -177,6 +182,6 @@ public class AnimalProcessorsFactory {
 			}
 			
 		};
-	}
+	}	
 
 }
