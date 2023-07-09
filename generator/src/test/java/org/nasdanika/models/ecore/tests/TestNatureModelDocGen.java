@@ -65,12 +65,12 @@ import org.nasdanika.persistence.ObjectLoaderResource;
  * @author Pavel
  *
  */
-public class TestEcoreGen {
+public class TestNatureModelDocGen {
 	
 	@Test
-	public void testGraphEcoreDoc() throws IOException, DiagnosticException {
+	public void testGenerateNatureModelDoc() throws IOException, DiagnosticException {
 		List<EPackage> ePackages = Arrays.asList(EcorePackage.eINSTANCE, TestPackage.eINSTANCE);
-		EObjectGraphFactory graphFactory = new EcoreGraphFactory(true);
+		EObjectGraphFactory graphFactory = new EcoreGraphFactory(false); // TODO - to true in a separate test to weed out concurrency problems 
 		ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
 		List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
 		

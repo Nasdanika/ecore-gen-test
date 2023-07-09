@@ -6,6 +6,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.Util;
+import org.nasdanika.emf.EmfUtil.EModelElementDocumentation;
 import org.nasdanika.graph.processor.NodeProcessorConfig;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.Label;
@@ -83,6 +85,19 @@ public class AnimalProcessorsFactory {
 			@Override
 			public String getLoadDescription() {
 				return "Some description for animal name load";
+			}
+			
+			@Override
+			protected EModelElementDocumentation getLoadDocumentation() {
+				return new EModelElementDocumentation("""
+						Some ``documentation``:
+						
+						```yaml
+						key: value
+						```
+						
+						""", 
+						Util.createClassURI(getClass()));
 			}
 			
 		};
