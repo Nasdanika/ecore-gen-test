@@ -35,6 +35,9 @@ import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.NullProgressMonitor;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.exec.ExecPackage;
+import org.nasdanika.exec.content.ContentPackage;
+import org.nasdanika.exec.resources.ResourcesPackage;
 import org.nasdanika.graph.Connection;
 import org.nasdanika.graph.Element;
 import org.nasdanika.graph.JGraphTAdapter;
@@ -44,6 +47,7 @@ import org.nasdanika.graph.emf.EObjectNode;
 import org.nasdanika.graph.processor.ProcessorInfo;
 import org.nasdanika.graph.processor.emf.EObjectNodeProcessorReflectiveFactory;
 import org.nasdanika.html.model.app.Action;
+import org.nasdanika.html.model.app.AppPackage;
 import org.nasdanika.html.model.app.Label;
 import org.nasdanika.html.model.app.Link;
 import org.nasdanika.html.model.app.gen.ActionSiteGenerator;
@@ -51,6 +55,8 @@ import org.nasdanika.html.model.app.graph.Registry;
 import org.nasdanika.html.model.app.graph.URINodeProcessor;
 import org.nasdanika.html.model.app.graph.WidgetFactory;
 import org.nasdanika.html.model.app.graph.emf.EObjectReflectiveProcessorFactory;
+import org.nasdanika.html.model.bootstrap.BootstrapPackage;
+import org.nasdanika.html.model.html.HtmlPackage;
 import org.nasdanika.models.ecore.graph.EClassNode;
 import org.nasdanika.models.ecore.graph.EcoreGraphFactory;
 import org.nasdanika.models.ecore.graph.processors.EcoreNodeProcessorFactory;
@@ -58,6 +64,7 @@ import org.nasdanika.models.ecore.test.Fox;
 import org.nasdanika.models.ecore.test.TestPackage;
 import org.nasdanika.models.ecore.test.processors.EcoreGenTestProcessorsFactory;
 import org.nasdanika.models.ecore.test.util.TestObjectLoaderSupplier;
+import org.nasdanika.ncore.NcorePackage;
 import org.nasdanika.persistence.ObjectLoaderResource;
 
 /**
@@ -66,6 +73,77 @@ import org.nasdanika.persistence.ObjectLoaderResource;
  *
  */
 public class TestNatureModelDocGen {
+		
+	@Test
+	public void testParallel() throws IOException, DiagnosticException {
+		List<EPackage> ePackages = Arrays.asList(
+				EcorePackage.eINSTANCE, 
+				NcorePackage.eINSTANCE,
+				ExecPackage.eINSTANCE,
+				ContentPackage.eINSTANCE,
+				ResourcesPackage.eINSTANCE,
+				HtmlPackage.eINSTANCE,
+				BootstrapPackage.eINSTANCE,
+				AppPackage.eINSTANCE,
+				TestPackage.eINSTANCE);
+		
+		for (int i = 0; i < 10; ++i) {
+			System.out.println("*** Pass " + i);
+			EObjectGraphFactory graphFactory = new EcoreGraphFactory(true);  
+			ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
+			List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
+			
+			Context context = Context.EMPTY_CONTEXT;
+			Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);
+	
+			List<Function<URI,Action>> actionProviders = new ArrayList<>();		
+	
+	//		CoreDocLoader coreDocLoader = new CoreDocLoader(diagnosticConsumer, context, progressMonitor);
+	//		actionProviders.add(coreDocLoader::getPrototype);
+			
+			EcoreGenTestProcessorsFactory ecoreGenTestProcessorFactory = new EcoreGenTestProcessorsFactory();
+			
+			
+			EcoreNodeProcessorFactory ecoreNodeProcessorFactory = new EcoreNodeProcessorFactory(
+					context, 
+					(uri, pm) -> {
+						for (Function<URI, Action> ap: actionProviders) {
+							Action prototype = ap.apply(uri);
+							if (prototype != null) {
+								return prototype;
+							}
+						}
+						return null;
+					},
+					diagnosticConsumer,
+					ecoreGenTestProcessorFactory);
+			
+			EObjectNodeProcessorReflectiveFactory<Object, WidgetFactory, WidgetFactory, Registry<URI>> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
+			
+			EObjectReflectiveProcessorFactory eObjectReflectiveProcessorFactory = new EObjectReflectiveProcessorFactory(eObjectNodeProcessorReflectiveFactory);
+			
+			org.nasdanika.html.model.app.graph.Registry<URI> registry = eObjectReflectiveProcessorFactory.createProcessors(nodes, progressMonitor);
+			
+			List<Throwable> failures = registry
+					.getProcessorInfoMap()
+					.values()
+					.stream()
+					.flatMap(pi -> pi.getFailures().stream())
+					.collect(Collectors.toList());
+			
+			
+			if (!failures.isEmpty()) {
+				NasdanikaException ne = new NasdanikaException("Theres's been " + failures.size() +  " failures during processor creation: " + failures);
+				for (Throwable failure: failures) {
+					ne.addSuppressed(failure);
+				}
+				throw ne;
+			}
+			
+			System.out.println(registry.getProcessorInfoMap().size());
+		}
+		
+	}	
 	
 	@Test
 	public void testGenerateNatureModelDoc() throws IOException, DiagnosticException {
