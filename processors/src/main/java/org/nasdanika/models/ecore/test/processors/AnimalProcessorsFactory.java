@@ -5,6 +5,7 @@ import java.util.function.BiConsumer;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.Context;
+import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.emf.EmfUtil.EModelElementDocumentation;
@@ -113,6 +114,9 @@ public class AnimalProcessorsFactory {
 			java.util.function.Function<ProgressMonitor, Action> prototypeProvider,
 			BiConsumer<Label, ProgressMonitor> labelConfigurator,
 			ProgressMonitor progressMonitor) {		
+		
+//		throw new NasdanikaException("Pizdec");
+		
 		return new EOperationNodeProcessor(config, context, prototypeProvider) {
 			
 			@Override

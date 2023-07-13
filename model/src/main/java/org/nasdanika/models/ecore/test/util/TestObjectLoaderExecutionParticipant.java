@@ -15,8 +15,8 @@ import org.nasdanika.models.ecore.test.TestPackage;
  */
 public abstract class TestObjectLoaderExecutionParticipant extends ObjectLoaderExecutionParticipant {
 
-	public TestObjectLoaderExecutionParticipant(Context context) {
-		super(context);
+	public TestObjectLoaderExecutionParticipant(Context context, boolean parallel) {
+		super(context, parallel);
 	}
 
 	@Override

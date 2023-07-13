@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.DiagnosticException;
 import org.eclipse.emf.common.util.URI;
@@ -92,14 +92,21 @@ public class TestNatureModelDocGen {
 			EObjectGraphFactory graphFactory = new EcoreGraphFactory(true);  
 			ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
 			List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
+			System.out.println("Roots: " + nodes.size());
+			
+			AtomicLong nodeCounter = new AtomicLong();
+			AtomicLong connectionCounter = new AtomicLong();
+			for (EObjectNode node: nodes) {
+				node.accept(e -> {
+					(e instanceof Node ? nodeCounter : connectionCounter).incrementAndGet();
+				});				
+			}
+			System.out.println("Nodes: " + nodeCounter.get() + ", Connections: " + connectionCounter.get());
 			
 			Context context = Context.EMPTY_CONTEXT;
 			Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);
 	
 			List<Function<URI,Action>> actionProviders = new ArrayList<>();		
-	
-	//		CoreDocLoader coreDocLoader = new CoreDocLoader(diagnosticConsumer, context, progressMonitor);
-	//		actionProviders.add(coreDocLoader::getPrototype);
 			
 			EcoreGenTestProcessorsFactory ecoreGenTestProcessorFactory = new EcoreGenTestProcessorsFactory();
 			
@@ -119,36 +126,16 @@ public class TestNatureModelDocGen {
 					ecoreGenTestProcessorFactory);
 			
 			EObjectNodeProcessorReflectiveFactory<Object, WidgetFactory, WidgetFactory, Registry<URI>> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
-			
 			EObjectReflectiveProcessorFactory eObjectReflectiveProcessorFactory = new EObjectReflectiveProcessorFactory(eObjectNodeProcessorReflectiveFactory);
-			
-			org.nasdanika.html.model.app.graph.Registry<URI> registry = eObjectReflectiveProcessorFactory.createProcessors(nodes, progressMonitor);
-			
-			List<Throwable> failures = registry
-					.getProcessorInfoMap()
-					.values()
-					.stream()
-					.flatMap(pi -> pi.getFailures().stream())
-					.collect(Collectors.toList());
-			
-			
-			if (!failures.isEmpty()) {
-				NasdanikaException ne = new NasdanikaException("Theres's been " + failures.size() +  " failures during processor creation: " + failures);
-				for (Throwable failure: failures) {
-					ne.addSuppressed(failure);
-				}
-				throw ne;
-			}
-			
-			System.out.println(registry.getProcessorInfoMap().size());
+			org.nasdanika.html.model.app.graph.Registry<URI> registry = eObjectReflectiveProcessorFactory.createProcessors(nodes, false, progressMonitor);
+			System.out.println(registry.getProcessorInfoMap().size() + " " + registry.getProcessorInfoMap().values().stream().filter(pi -> pi.getProcessor() != null).count());
 		}
-		
 	}	
 	
 	@Test
 	public void testGenerateNatureModelDoc() throws IOException, DiagnosticException {
 		List<EPackage> ePackages = Arrays.asList(EcorePackage.eINSTANCE, TestPackage.eINSTANCE);
-		EObjectGraphFactory graphFactory = new EcoreGraphFactory(false); // TODO - to true in a separate test to weed out concurrency problems 
+		EObjectGraphFactory graphFactory = new EcoreGraphFactory(false);  
 		ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
 		List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
 		
@@ -178,25 +165,8 @@ public class TestNatureModelDocGen {
 				ecoreGenTestProcessorFactory);
 		
 		EObjectNodeProcessorReflectiveFactory<Object, WidgetFactory, WidgetFactory, Registry<URI>> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
-		
 		EObjectReflectiveProcessorFactory eObjectReflectiveProcessorFactory = new EObjectReflectiveProcessorFactory(eObjectNodeProcessorReflectiveFactory);
-		
-		org.nasdanika.html.model.app.graph.Registry<URI> registry = eObjectReflectiveProcessorFactory.createProcessors(nodes, progressMonitor);
-		
-		List<Throwable> failures = registry
-				.getProcessorInfoMap()
-				.values()
-				.stream()
-				.flatMap(pi -> pi.getFailures().stream())
-				.collect(Collectors.toList());
-		
-		if (!failures.isEmpty()) {
-			NasdanikaException ne = new NasdanikaException("Theres's been " + failures.size() +  " failures during processor creation: " + failures);
-			for (Throwable failure: failures) {
-				ne.addSuppressed(failure);
-			}
-			throw ne;
-		}						
+		org.nasdanika.html.model.app.graph.Registry<URI> registry = eObjectReflectiveProcessorFactory.createProcessors(nodes, false, progressMonitor);
 		
 		URINodeProcessor testProcessor = null;
 		Collection<Throwable> resolveFailures = new ArrayList<>();		
@@ -309,7 +279,7 @@ public class TestNatureModelDocGen {
 		Context context = Context.EMPTY_CONTEXT;
 		Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);
 		
-		Fox fox = (Fox) TestObjectLoaderSupplier.loadObject(specURI, diagnosticConsumer, context, progressMonitor);
+		Fox fox = (Fox) TestObjectLoaderSupplier.loadObject(specURI, diagnosticConsumer, context, false, progressMonitor);
 		
 		System.out.println("Fox name: " + fox.getName());
 	}
