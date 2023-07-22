@@ -2,18 +2,16 @@ package org.nasdanika.models.ecore.test.processors;
 
 import java.util.function.BiConsumer;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Reflector.Factory;
 import org.nasdanika.graph.processor.NodeProcessorConfig;
-import org.nasdanika.models.ecore.graph.processors.EPackageNodeProcessor;
-import org.nasdanika.models.ecore.graph.processors.EPackageNodeProcessorFactory;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.Label;
-import org.nasdanika.html.model.app.graph.Registry;
 import org.nasdanika.html.model.app.graph.WidgetFactory;
+import org.nasdanika.models.ecore.graph.processors.EPackageNodeProcessor;
+import org.nasdanika.models.ecore.graph.processors.EPackageNodeProcessorFactory;
 import org.nasdanika.models.ecore.test.TestPackage;
 
 @EPackageNodeProcessorFactory(nsURI = TestPackage.eNS_URI)
@@ -50,7 +48,7 @@ public class EcoreGenTestProcessorsFactory {
 				"""
 	)
 	public EPackageNodeProcessor createEPackageProcessor(
-			NodeProcessorConfig<Object, WidgetFactory, WidgetFactory, Registry<URI>> config, 
+			NodeProcessorConfig<WidgetFactory, WidgetFactory> config, 
 			java.util.function.Function<ProgressMonitor, Action> prototypeProvider,
 			BiConsumer<Label, ProgressMonitor> labelConfigurator,
 			ProgressMonitor progressMonitor) {		

@@ -2,17 +2,14 @@ package org.nasdanika.models.ecore.test.processors;
 
 import java.util.function.BiConsumer;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.Context;
-import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.emf.EmfUtil.EModelElementDocumentation;
 import org.nasdanika.graph.processor.NodeProcessorConfig;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.Label;
-import org.nasdanika.html.model.app.graph.Registry;
 import org.nasdanika.html.model.app.graph.WidgetFactory;
 import org.nasdanika.models.ecore.graph.processors.EAttributeNodeProcessor;
 import org.nasdanika.models.ecore.graph.processors.EClassNodeProcessor;
@@ -45,7 +42,7 @@ public class AnimalProcessorsFactory {
 			description = "Животные относятся к эукариотам (в клетках имеются ядра). Классическими признаками животных считаются: гетеротрофность (питание готовыми органическими соединениями) и способность активно передвигаться."
 	)
 	public EClassNodeProcessor createAnimalProcessor(
-			NodeProcessorConfig<Object, WidgetFactory, WidgetFactory, Registry<URI>> config, 
+			NodeProcessorConfig<WidgetFactory, WidgetFactory> config, 
 			java.util.function.Function<ProgressMonitor, Action> prototypeProvider,
 			BiConsumer<Label, ProgressMonitor> labelConfigurator,
 			ProgressMonitor progressMonitor) {		
@@ -69,7 +66,7 @@ public class AnimalProcessorsFactory {
 			documentation = "Test of attribute documentation"
 	)
 	public EAttributeNodeProcessor createAnimalNameProcessor(
-			NodeProcessorConfig<Object, WidgetFactory, WidgetFactory, Registry<URI>> config, 
+			NodeProcessorConfig<WidgetFactory, WidgetFactory> config, 
 			java.util.function.Function<ProgressMonitor, Action> prototypeProvider,
 			BiConsumer<Label, ProgressMonitor> labelConfigurator,
 			ProgressMonitor progressMonitor) {		
@@ -110,7 +107,7 @@ public class AnimalProcessorsFactory {
 			documentation = "Test of operation documentation"
 	)
 	public EOperationNodeProcessor createAnimalEatsProcessor(
-			NodeProcessorConfig<Object, WidgetFactory, WidgetFactory, Registry<URI>> config, 
+			NodeProcessorConfig<WidgetFactory, WidgetFactory> config, 
 			java.util.function.Function<ProgressMonitor, Action> prototypeProvider,
 			BiConsumer<Label, ProgressMonitor> labelConfigurator,
 			ProgressMonitor progressMonitor) {		
@@ -138,7 +135,7 @@ public class AnimalProcessorsFactory {
 			documentation = "Test of parameter documentation"
 	)
 	public EParameterNodeProcessor createAnimalEatsFoodProcessor(
-			NodeProcessorConfig<Object, WidgetFactory, WidgetFactory, Registry<URI>> config, 
+			NodeProcessorConfig<WidgetFactory, WidgetFactory> config, 
 			java.util.function.Function<ProgressMonitor, Action> prototypeProvider,
 			BiConsumer<Label, ProgressMonitor> labelConfigurator,
 			ProgressMonitor progressMonitor) {		
@@ -162,7 +159,7 @@ public class AnimalProcessorsFactory {
 			documentation = "Test of type parameter documentation"
 	)
 	public ETypeParameterNodeProcessor createAnimalFoodTypeParameterProcessor(
-			NodeProcessorConfig<Object, WidgetFactory, WidgetFactory, Registry<URI>> config, 
+			NodeProcessorConfig<WidgetFactory, WidgetFactory> config, 
 			java.util.function.Function<ProgressMonitor, Action> prototypeProvider,
 			BiConsumer<Label, ProgressMonitor> labelConfigurator,
 			ProgressMonitor progressMonitor) {		
@@ -186,7 +183,7 @@ public class AnimalProcessorsFactory {
 			documentation = "Hmm documentation"
 	)
 	public EGenericTypeNodeProcessor createAnimalFoodTypeParameterBoundProcessor(
-			NodeProcessorConfig<Object, WidgetFactory, WidgetFactory, Registry<URI>> config, 
+			NodeProcessorConfig<WidgetFactory, WidgetFactory> config, 
 			java.util.function.Function<ProgressMonitor, Action> prototypeProvider,
 			BiConsumer<Label, ProgressMonitor> labelConfigurator,
 			ProgressMonitor progressMonitor) {			

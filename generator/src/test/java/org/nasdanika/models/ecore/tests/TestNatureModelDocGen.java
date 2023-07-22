@@ -6,10 +6,12 @@ import java.lang.module.ModuleDescriptor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.CompletionStage;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -19,6 +21,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -44,6 +47,9 @@ import org.nasdanika.graph.JGraphTAdapter;
 import org.nasdanika.graph.Node;
 import org.nasdanika.graph.emf.EObjectGraphFactory;
 import org.nasdanika.graph.emf.EObjectNode;
+import org.nasdanika.graph.processor.NodeProcessorConfig;
+import org.nasdanika.graph.processor.NopEndpointProcessorConfigFactory;
+import org.nasdanika.graph.processor.ProcessorConfig;
 import org.nasdanika.graph.processor.ProcessorInfo;
 import org.nasdanika.graph.processor.emf.EObjectNodeProcessorReflectiveFactory;
 import org.nasdanika.html.model.app.Action;
@@ -51,14 +57,13 @@ import org.nasdanika.html.model.app.AppPackage;
 import org.nasdanika.html.model.app.Label;
 import org.nasdanika.html.model.app.Link;
 import org.nasdanika.html.model.app.gen.ActionSiteGenerator;
-import org.nasdanika.html.model.app.graph.Registry;
-import org.nasdanika.html.model.app.graph.URINodeProcessor;
 import org.nasdanika.html.model.app.graph.WidgetFactory;
-import org.nasdanika.html.model.app.graph.emf.EObjectReflectiveProcessorFactory;
+import org.nasdanika.html.model.app.graph.emf.EObjectReflectiveProcessorFactoryProvider;
 import org.nasdanika.html.model.bootstrap.BootstrapPackage;
 import org.nasdanika.html.model.html.HtmlPackage;
 import org.nasdanika.models.ecore.graph.EClassNode;
 import org.nasdanika.models.ecore.graph.EcoreGraphFactory;
+import org.nasdanika.models.ecore.graph.processors.EStructuralFeatureNodeProcessor;
 import org.nasdanika.models.ecore.graph.processors.EcoreNodeProcessorFactory;
 import org.nasdanika.models.ecore.test.Fox;
 import org.nasdanika.models.ecore.test.TestPackage;
@@ -102,12 +107,21 @@ public class TestNatureModelDocGen {
 				});				
 			}
 			System.out.println("Nodes: " + nodeCounter.get() + ", Connections: " + connectionCounter.get());
+
+			NopEndpointProcessorConfigFactory<WidgetFactory> configFactory = new NopEndpointProcessorConfigFactory<>() {
+				
+				@Override
+				protected boolean isPassThrough(Connection connection) {
+					return false;
+				}
+				
+			};
+			Map<Element, ProcessorConfig> configs = configFactory.createConfigs(nodes, true, progressMonitor);
+			System.out.println("Configs: " + configs.size());
 			
 			Context context = Context.EMPTY_CONTEXT;
-			Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);
-	
-			List<Function<URI,Action>> actionProviders = new ArrayList<>();		
-			
+			Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);	
+			List<Function<URI,Action>> actionProviders = new ArrayList<>();					
 			EcoreGenTestProcessorsFactory ecoreGenTestProcessorFactory = new EcoreGenTestProcessorsFactory();
 			
 			
@@ -125,10 +139,40 @@ public class TestNatureModelDocGen {
 					diagnosticConsumer,
 					ecoreGenTestProcessorFactory);
 			
-			EObjectNodeProcessorReflectiveFactory<Object, WidgetFactory, WidgetFactory, Registry<URI>> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
-			EObjectReflectiveProcessorFactory eObjectReflectiveProcessorFactory = new EObjectReflectiveProcessorFactory(eObjectNodeProcessorReflectiveFactory);
-			org.nasdanika.html.model.app.graph.Registry<URI> registry = eObjectReflectiveProcessorFactory.createProcessors(nodes, false, progressMonitor);
-			System.out.println(registry.getProcessorInfoMap().size() + " " + registry.getProcessorInfoMap().values().stream().filter(pi -> pi.getProcessor() != null).count());
+			EObjectNodeProcessorReflectiveFactory<WidgetFactory, WidgetFactory> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
+			EObjectReflectiveProcessorFactoryProvider eObjectReflectiveProcessorFactoryProvider = new EObjectReflectiveProcessorFactoryProvider(eObjectNodeProcessorReflectiveFactory);
+			Map<Element, ProcessorInfo<Object>> registry = eObjectReflectiveProcessorFactoryProvider.getFactory().createProcessors(configs, true, progressMonitor);
+			
+			List<EStructuralFeature> good = Collections.synchronizedList(new ArrayList<>());
+			List<EStructuralFeature> bad = Collections.synchronizedList(new ArrayList<>());
+			
+			registry.values().forEach(info -> {
+				if (info.getProcessor() instanceof EStructuralFeatureNodeProcessor) {
+					EStructuralFeatureNodeProcessor<?> processor = (EStructuralFeatureNodeProcessor<?>) info.getProcessor();
+					WidgetFactory dcwf = (processor).getDeclaringClassWidgetFactory();
+					(dcwf == null ? bad : good).add((EStructuralFeature) ((EObjectNode) info.getElement()).getTarget());
+//					if (dcwf == null) {
+//						NodeProcessorConfig<WidgetFactory, WidgetFactory> config = processor.getConfig();
+//						for (Connection conn: config.getElement().getOutgoingConnections()) {
+//							System.out.println(conn);
+//						}
+//						System.out.println("---");
+//						for (Entry<Connection, Consumer<WidgetFactory>> hce: config.getOutgoingHandlerConsumers().entrySet()) {
+//							System.out.println(hce.getKey() + " -> " + hce.getValue());
+//						}
+//						System.out.println("---");
+//						for (Entry<Connection, CompletionStage<WidgetFactory>> ee: config.getOutgoingEndpoints().entrySet()) {
+//							System.out.println(ee.getKey() + " -> " + ee.getValue());
+//						}
+//						System.out.println("===");
+//					}
+				}
+			});
+			
+			System.out.println("Wired: " + bad.size() + "/" + good.size());
+			
+			
+			System.out.println(registry.size() + " " + registry.values().stream().filter(pi -> pi.getProcessor() != null).count());
 		}
 	}	
 	
@@ -138,18 +182,21 @@ public class TestNatureModelDocGen {
 		EObjectGraphFactory graphFactory = new EcoreGraphFactory(false);  
 		ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
 		List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
+
+		NopEndpointProcessorConfigFactory<WidgetFactory> configFactory = new NopEndpointProcessorConfigFactory<>() {
+			
+			@Override
+			protected boolean isPassThrough(Connection connection) {
+				return false;
+			}
+			
+		};
+		Map<Element, ProcessorConfig> configs = configFactory.createConfigs(nodes, false, progressMonitor);
 		
 		Context context = Context.EMPTY_CONTEXT;
 		Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);
-
 		List<Function<URI,Action>> actionProviders = new ArrayList<>();		
-
-//		CoreDocLoader coreDocLoader = new CoreDocLoader(diagnosticConsumer, context, progressMonitor);
-//		actionProviders.add(coreDocLoader::getPrototype);
-		
-		EcoreGenTestProcessorsFactory ecoreGenTestProcessorFactory = new EcoreGenTestProcessorsFactory();
-		
-		
+		EcoreGenTestProcessorsFactory ecoreGenTestProcessorFactory = new EcoreGenTestProcessorsFactory();		
 		EcoreNodeProcessorFactory ecoreNodeProcessorFactory = new EcoreNodeProcessorFactory(
 				context, 
 				(uri, pm) -> {
@@ -164,11 +211,11 @@ public class TestNatureModelDocGen {
 				diagnosticConsumer,
 				ecoreGenTestProcessorFactory);
 		
-		EObjectNodeProcessorReflectiveFactory<Object, WidgetFactory, WidgetFactory, Registry<URI>> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
-		EObjectReflectiveProcessorFactory eObjectReflectiveProcessorFactory = new EObjectReflectiveProcessorFactory(eObjectNodeProcessorReflectiveFactory);
-		org.nasdanika.html.model.app.graph.Registry<URI> registry = eObjectReflectiveProcessorFactory.createProcessors(nodes, false, progressMonitor);
+		EObjectNodeProcessorReflectiveFactory<WidgetFactory, WidgetFactory> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
+		EObjectReflectiveProcessorFactoryProvider eObjectReflectiveProcessorFactoryProvider = new EObjectReflectiveProcessorFactoryProvider(eObjectNodeProcessorReflectiveFactory);
+		Map<Element, ProcessorInfo<Object>> registry = eObjectReflectiveProcessorFactoryProvider.getFactory().createProcessors(configs, false, progressMonitor);
 		
-		URINodeProcessor testProcessor = null;
+		WidgetFactory testProcessor = null;
 		Collection<Throwable> resolveFailures = new ArrayList<>();		
 		URI baseActionURI = URI.createURI("tmp-https://test.nasdanika.org/");
 		
@@ -179,20 +226,20 @@ public class TestNatureModelDocGen {
 		);
 		
 		for (EPackage topLevelPackage: ePackages) {
-			for (Entry<Element, ProcessorInfo<Object, Registry<URI>>> re: registry.getProcessorInfoMap().entrySet()) {
+			for (Entry<Element, ProcessorInfo<Object>> re: registry.entrySet()) {
 				Element element = re.getKey();
 				if (element instanceof EObjectNode) {
 					EObjectNode eObjNode = (EObjectNode) element;
 					EObject target = eObjNode.getTarget();
 					if (target == topLevelPackage) {
-						ProcessorInfo<Object, Registry<URI>> info = re.getValue();
+						ProcessorInfo<Object> info = re.getValue();
 						Object processor = info.getProcessor();
-						if (processor instanceof URINodeProcessor) {
-							URINodeProcessor uriNodeProcessor = (URINodeProcessor) processor;
-							uriNodeProcessor.resolve(packageURIMap.get(topLevelPackage), progressMonitor);
+						if (processor instanceof WidgetFactory) {
+							WidgetFactory widgetFactoryNodeProcessor = (WidgetFactory) processor;
+							widgetFactoryNodeProcessor.resolve(packageURIMap.get(topLevelPackage), progressMonitor);
 							
 							if (topLevelPackage == TestPackage.eINSTANCE) { 							
-								testProcessor = uriNodeProcessor;
+								testProcessor = widgetFactoryNodeProcessor;
 							}
 						}
 					}
@@ -279,7 +326,7 @@ public class TestNatureModelDocGen {
 		Context context = Context.EMPTY_CONTEXT;
 		Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);
 		
-		Fox fox = (Fox) TestObjectLoaderSupplier.loadObject(specURI, diagnosticConsumer, context, false, progressMonitor);
+		Fox fox = (Fox) TestObjectLoaderSupplier.loadObject(specURI, diagnosticConsumer, context, progressMonitor);
 		
 		System.out.println("Fox name: " + fox.getName());
 	}

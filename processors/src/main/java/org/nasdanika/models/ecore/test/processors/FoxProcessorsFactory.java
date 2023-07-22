@@ -2,7 +2,6 @@ package org.nasdanika.models.ecore.test.processors;
 
 import java.util.function.BiConsumer;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.ProgressMonitor;
@@ -11,7 +10,6 @@ import org.nasdanika.emf.EmfUtil.EModelElementDocumentation;
 import org.nasdanika.graph.processor.NodeProcessorConfig;
 import org.nasdanika.html.model.app.Action;
 import org.nasdanika.html.model.app.Label;
-import org.nasdanika.html.model.app.graph.Registry;
 import org.nasdanika.html.model.app.graph.WidgetFactory;
 import org.nasdanika.models.ecore.graph.processors.EClassNodeProcessor;
 import org.nasdanika.models.ecore.graph.processors.EClassifierNodeProcessorFactory;
@@ -42,7 +40,7 @@ public class FoxProcessorsFactory {
 			icon = "https://img.icons8.com/fluency-systems-regular/16/fox.svg"
 	)
 	public EClassNodeProcessor createFoxProcessor(
-			NodeProcessorConfig<Object, WidgetFactory, WidgetFactory, Registry<URI>> config, 
+			NodeProcessorConfig<WidgetFactory, WidgetFactory> config, 
 			java.util.function.Function<ProgressMonitor, Action> prototypeProvider,
 			BiConsumer<Label, ProgressMonitor> labelConfigurator,
 			ProgressMonitor progressMonitor) {		
