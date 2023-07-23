@@ -44,5 +44,10 @@ public class FoxImpl extends AnimalImpl<Hare> implements Fox {
 	public void setGenericAttribute(Hare newGenericAttribute) {
 		super.setGenericAttribute(newGenericAttribute);
 	}
+	
+	@Override
+	public void eats(Hare food) {
+		System.out.println("Yum, tasty!");
+	}
 
 } //FoxImpl
