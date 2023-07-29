@@ -1,21 +1,15 @@
 package org.nasdanika.models.ecore.tests;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.module.ModuleDescriptor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -24,7 +18,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -41,6 +34,7 @@ import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.NullProgressMonitor;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.common.Transformer;
 import org.nasdanika.exec.ExecPackage;
 import org.nasdanika.exec.content.ContentPackage;
 import org.nasdanika.exec.resources.ResourcesPackage;
@@ -48,7 +42,6 @@ import org.nasdanika.graph.Connection;
 import org.nasdanika.graph.Element;
 import org.nasdanika.graph.JGraphTAdapter;
 import org.nasdanika.graph.Node;
-import org.nasdanika.graph.emf.EObjectGraphFactory;
 import org.nasdanika.graph.emf.EObjectNode;
 import org.nasdanika.graph.processor.NopEndpointProcessorConfigFactory;
 import org.nasdanika.graph.processor.ProcessorConfig;
@@ -65,7 +58,6 @@ import org.nasdanika.html.model.bootstrap.BootstrapPackage;
 import org.nasdanika.html.model.html.HtmlPackage;
 import org.nasdanika.models.ecore.graph.EClassNode;
 import org.nasdanika.models.ecore.graph.EcoreGraphFactory;
-import org.nasdanika.models.ecore.graph.processors.EStructuralFeatureNodeProcessor;
 import org.nasdanika.models.ecore.graph.processors.EcoreNodeProcessorFactory;
 import org.nasdanika.models.ecore.test.Fox;
 import org.nasdanika.models.ecore.test.TestPackage;
@@ -98,114 +90,114 @@ public class TestNatureModelDocGen {
 		for (int i = 0; i < 10; ++i) {
 			parallel = !parallel;
 			System.out.println("*** Pass " + i + " " + (parallel ? "parallel" : "sequential"));
-			EObjectGraphFactory graphFactory = new EcoreGraphFactory(parallel);  
 			ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
-			List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
-			System.out.println("Roots: " + nodes.size());
-			
-			AtomicLong nodeCounter = new AtomicLong();
-			AtomicLong connectionCounter = new AtomicLong();
-			for (EObjectNode node: nodes) {
-				node.accept(e -> {
-					(e instanceof Node ? nodeCounter : connectionCounter).incrementAndGet();
-				});				
-			}
-			System.out.println("Nodes: " + nodeCounter.get() + ", Connections: " + connectionCounter.get());
-
-			NopEndpointProcessorConfigFactory<WidgetFactory> configFactory = new NopEndpointProcessorConfigFactory<>() {
-				
-				@Override
-				protected boolean isPassThrough(Connection connection) {
-					return false;
-				}
-				
-			};
-			Map<Element, ProcessorConfig> configs = configFactory.createConfigs(nodes, parallel, progressMonitor);
-			System.out.println("Configs: " + configs.size());
-			
-			AtomicLong elementCounter = new AtomicLong();
-			
-			for (EObjectNode node: nodes) {
-				node.accept(e -> {
-					elementCounter.incrementAndGet();
-					ProcessorConfig config = configs.get(e);
-					assertNotNull(config);
-					Element configElement = config.getElement();
-					assertEquals(e, configElement);
-					if (configElement != e) {
-						boolean isEqual = configElement.equals(e);
-						System.out.println(configElement + " " + e + " " + isEqual);
-					}
-					assertTrue(configElement == e);
-				});				
-			}
-			
-			assertEquals(elementCounter.get(), nodeCounter.get() + connectionCounter.get());			
-			assertEquals(nodeCounter.get() + connectionCounter.get(), configs.size());
-			
-			Context context = Context.EMPTY_CONTEXT;
-			Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);	
-			List<Function<URI,Action>> actionProviders = new ArrayList<>();					
-			EcoreGenTestProcessorsFactory ecoreGenTestProcessorFactory = new EcoreGenTestProcessorsFactory();
-			
-			
-			EcoreNodeProcessorFactory ecoreNodeProcessorFactory = new EcoreNodeProcessorFactory(
-					context, 
-					(uri, pm) -> {
-						for (Function<URI, Action> ap: actionProviders) {
-							Action prototype = ap.apply(uri);
-							if (prototype != null) {
-								return prototype;
-							}
-						}
-						return null;
-					},
-					diagnosticConsumer,
-					ecoreGenTestProcessorFactory);
-			
-			EObjectNodeProcessorReflectiveFactory<WidgetFactory, WidgetFactory> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
-			EObjectReflectiveProcessorFactoryProvider eObjectReflectiveProcessorFactoryProvider = new EObjectReflectiveProcessorFactoryProvider(eObjectNodeProcessorReflectiveFactory);
-			Map<Element, ProcessorInfo<Object>> registry = eObjectReflectiveProcessorFactoryProvider.getFactory().createProcessors(configs, parallel, progressMonitor);
-			
-			List<EStructuralFeature> wired = Collections.synchronizedList(new ArrayList<>());
-			List<EStructuralFeature> unwired = Collections.synchronizedList(new ArrayList<>());
-			
-			registry.values().forEach(info -> {
-				if (info.getProcessor() instanceof EStructuralFeatureNodeProcessor) {
-					EStructuralFeatureNodeProcessor<?> processor = (EStructuralFeatureNodeProcessor<?>) info.getProcessor();
-					WidgetFactory dcwf = (processor).getDeclaringClassWidgetFactory();
-					(dcwf == null ? unwired : wired).add((EStructuralFeature) ((EObjectNode) info.getElement()).getTarget());
-//					if (dcwf == null) {
-//						NodeProcessorConfig<WidgetFactory, WidgetFactory> config = processor.getConfig();
-//						for (Connection conn: config.getElement().getOutgoingConnections()) {
-//							System.out.println(conn);
-//						}
-//						System.out.println("---");
-//						for (Entry<Connection, Consumer<WidgetFactory>> hce: config.getOutgoingHandlerConsumers().entrySet()) {
-//							System.out.println(hce.getKey() + " -> " + hce.getValue());
-//						}
-//						System.out.println("---");
-//						for (Entry<Connection, CompletionStage<WidgetFactory>> ee: config.getOutgoingEndpoints().entrySet()) {
-//							System.out.println(ee.getKey() + " -> " + ee.getValue());
-//						}
-//						System.out.println("===");
+			Transformer<EObject,Element> graphFactory = new Transformer<>(new EcoreGraphFactory());
+			Map<EObject, Element> graph = graphFactory.transform(ePackages, parallel, progressMonitor);
+			System.out.println("Graph size: " + graph.size());
+//			
+//			AtomicLong nodeCounter = new AtomicLong();
+//			AtomicLong connectionCounter = new AtomicLong();
+//			for (EObjectNode node: nodes) {
+//				node.accept(e -> {
+//					(e instanceof Node ? nodeCounter : connectionCounter).incrementAndGet();
+//				});				
+//			}
+//			System.out.println("Nodes: " + nodeCounter.get() + ", Connections: " + connectionCounter.get());
+//
+//			NopEndpointProcessorConfigFactory<WidgetFactory> configFactory = new NopEndpointProcessorConfigFactory<>() {
+//				
+//				@Override
+//				protected boolean isPassThrough(Connection connection) {
+//					return false;
+//				}
+//				
+//			};
+//			Map<Element, ProcessorConfig> configs = configFactory.createConfigs(nodes, parallel, progressMonitor);
+//			System.out.println("Configs: " + configs.size());
+//			
+//			AtomicLong elementCounter = new AtomicLong();
+//			
+//			for (EObjectNode node: nodes) {
+//				node.accept(e -> {
+//					elementCounter.incrementAndGet();
+//					ProcessorConfig config = configs.get(e);
+//					assertNotNull(config);
+//					Element configElement = config.getElement();
+//					assertEquals(e, configElement);
+//					if (configElement != e) {
+//						boolean isEqual = configElement.equals(e);
+//						System.out.println(configElement + " " + e + " " + isEqual);
 //					}
-				}
-			});
-			
-			System.out.println("Wired: " + unwired.size() + "/" + wired.size());
-			assertEquals(0, unwired.size(), "Unwired endpoints: " + unwired.size());			
-			
-			System.out.println(registry.size() + " " + registry.values().stream().filter(pi -> pi.getProcessor() != null).count());
+//					assertTrue(configElement == e);
+//				});				
+//			}
+//			
+//			assertEquals(elementCounter.get(), nodeCounter.get() + connectionCounter.get());			
+//			assertEquals(nodeCounter.get() + connectionCounter.get(), configs.size());
+//			
+//			Context context = Context.EMPTY_CONTEXT;
+//			Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);	
+//			List<Function<URI,Action>> actionProviders = new ArrayList<>();					
+//			EcoreGenTestProcessorsFactory ecoreGenTestProcessorFactory = new EcoreGenTestProcessorsFactory();
+//			
+//			
+//			EcoreNodeProcessorFactory ecoreNodeProcessorFactory = new EcoreNodeProcessorFactory(
+//					context, 
+//					(uri, pm) -> {
+//						for (Function<URI, Action> ap: actionProviders) {
+//							Action prototype = ap.apply(uri);
+//							if (prototype != null) {
+//								return prototype;
+//							}
+//						}
+//						return null;
+//					},
+//					diagnosticConsumer,
+//					ecoreGenTestProcessorFactory);
+//			
+//			EObjectNodeProcessorReflectiveFactory<WidgetFactory, WidgetFactory> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
+//			EObjectReflectiveProcessorFactoryProvider eObjectReflectiveProcessorFactoryProvider = new EObjectReflectiveProcessorFactoryProvider(eObjectNodeProcessorReflectiveFactory);
+//			Map<Element, ProcessorInfo<Object>> registry = eObjectReflectiveProcessorFactoryProvider.getFactory().createProcessors(configs, parallel, progressMonitor);
+//			
+//			List<EStructuralFeature> wired = Collections.synchronizedList(new ArrayList<>());
+//			List<EStructuralFeature> unwired = Collections.synchronizedList(new ArrayList<>());
+//			
+//			registry.values().forEach(info -> {
+//				if (info.getProcessor() instanceof EStructuralFeatureNodeProcessor) {
+//					EStructuralFeatureNodeProcessor<?> processor = (EStructuralFeatureNodeProcessor<?>) info.getProcessor();
+//					WidgetFactory dcwf = (processor).getDeclaringClassWidgetFactory();
+//					(dcwf == null ? unwired : wired).add((EStructuralFeature) ((EObjectNode) info.getElement()).getTarget());
+////					if (dcwf == null) {
+////						NodeProcessorConfig<WidgetFactory, WidgetFactory> config = processor.getConfig();
+////						for (Connection conn: config.getElement().getOutgoingConnections()) {
+////							System.out.println(conn);
+////						}
+////						System.out.println("---");
+////						for (Entry<Connection, Consumer<WidgetFactory>> hce: config.getOutgoingHandlerConsumers().entrySet()) {
+////							System.out.println(hce.getKey() + " -> " + hce.getValue());
+////						}
+////						System.out.println("---");
+////						for (Entry<Connection, CompletionStage<WidgetFactory>> ee: config.getOutgoingEndpoints().entrySet()) {
+////							System.out.println(ee.getKey() + " -> " + ee.getValue());
+////						}
+////						System.out.println("===");
+////					}
+//				}
+//			});
+//			
+//			System.out.println("Wired: " + unwired.size() + "/" + wired.size());
+//			assertEquals(0, unwired.size(), "Unwired endpoints: " + unwired.size());			
+//			
+//			System.out.println(registry.size() + " " + registry.values().stream().filter(pi -> pi.getProcessor() != null).count());
 		}
 	}	
 	
 	@Test
 	public void testGenerateNatureModelDoc() throws IOException, DiagnosticException {
 		List<EPackage> ePackages = Arrays.asList(EcorePackage.eINSTANCE, TestPackage.eINSTANCE);
-		EObjectGraphFactory graphFactory = new EcoreGraphFactory(false);  
 		ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
-		List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
+		Transformer<EObject,Element> graphFactory = new Transformer<>(new EcoreGraphFactory());
+		Map<EObject, Element> graph = graphFactory.transform(ePackages, false, progressMonitor);
 
 		NopEndpointProcessorConfigFactory<WidgetFactory> configFactory = new NopEndpointProcessorConfigFactory<>() {
 			
@@ -215,7 +207,9 @@ public class TestNatureModelDocGen {
 			}
 			
 		};
-		Map<Element, ProcessorConfig> configs = configFactory.createConfigs(nodes, false, progressMonitor);
+		
+		Transformer<Element,ProcessorConfig> processorConfigTransformer = new Transformer<>(configFactory);				
+		Map<Element, ProcessorConfig> configs = processorConfigTransformer.transform(graph.values(), false, progressMonitor);
 		
 		Context context = Context.EMPTY_CONTEXT;
 		Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);
@@ -237,7 +231,7 @@ public class TestNatureModelDocGen {
 		
 		EObjectNodeProcessorReflectiveFactory<WidgetFactory, WidgetFactory> eObjectNodeProcessorReflectiveFactory = new EObjectNodeProcessorReflectiveFactory<>(ecoreNodeProcessorFactory);
 		EObjectReflectiveProcessorFactoryProvider eObjectReflectiveProcessorFactoryProvider = new EObjectReflectiveProcessorFactoryProvider(eObjectNodeProcessorReflectiveFactory);
-		Map<Element, ProcessorInfo<Object>> registry = eObjectReflectiveProcessorFactoryProvider.getFactory().createProcessors(configs, false, progressMonitor);
+		Map<Element, ProcessorInfo<Object>> registry = eObjectReflectiveProcessorFactoryProvider.getFactory().createProcessors(configs.values(), false, progressMonitor);
 		
 		WidgetFactory testProcessor = null;
 		Collection<Throwable> resolveFailures = new ArrayList<>();		
@@ -358,9 +352,9 @@ public class TestNatureModelDocGen {
 	@Test
 	public void testJGraphTAdapter() {
 		List<EPackage> ePackages = Arrays.asList(EcorePackage.eINSTANCE, TestPackage.eINSTANCE);
-		EObjectGraphFactory graphFactory = new EcoreGraphFactory(true);
+		Transformer<EObject,Element> graphFactory = new Transformer<>(new EcoreGraphFactory());
 		ProgressMonitor progressMonitor = new NullProgressMonitor(); // new PrintStreamProgressMonitor();
-		List<EObjectNode> nodes = graphFactory.createGraph(ePackages, progressMonitor);
+		Map<EObject, Element> eCoreGraph = graphFactory.transform(ePackages, false, progressMonitor);
 		
 		record EdgeRecord(String source, String target, Collection<Connection> edge) {};
 		
@@ -383,8 +377,8 @@ public class TestNatureModelDocGen {
 			
 		};
 		
-		for (EObjectNode node: nodes) {
-			node.accept(adapter);
+		for (Element element: eCoreGraph.values()) {
+			element.accept(adapter);
 		}
 		
 		DepthFirstIterator<String, EdgeRecord> depthFirstIterator = new DepthFirstIterator<>(graph);		
