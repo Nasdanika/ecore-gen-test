@@ -12,6 +12,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 import org.eclipse.emf.common.util.DiagnosticException;
 import org.eclipse.emf.common.util.URI;
@@ -20,7 +22,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Factory;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.jgrapht.Graph;
@@ -275,11 +279,44 @@ public class TestNatureModelDocGen {
 		
 		ResourceSet actionModelsResourceSet = new ResourceSetImpl();
 		actionModelsResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+
+		Factory binaryResourceFactory = new Resource.Factory() {
+
+			@Override
+			public Resource createResource(URI uri) {
+				return new BinaryResourceImpl(uri) {
+					
+					@Override
+					protected void doSave(java.io.OutputStream outputStream, java.util.Map<?,?> options) throws IOException {
+						try (java.io.OutputStream gzOut = new GZIPOutputStream(outputStream)) {
+							super.doSave(gzOut, options);
+						}
+					}
+					
+					@Override
+					protected void doLoad(java.io.InputStream inputStream, java.util.Map<?,?> options) throws IOException {
+						try (java.io.InputStream gzIn = new GZIPInputStream(inputStream)) {
+							super.doLoad(gzIn, options);
+						}						
+					}
+					
+					@Override
+					public EObject getEObject(String uriFragment) {
+						return super.getEObject(uriFragment);
+					};
+															
+				};
+			}
+			
+		};
+		
+		// Testing binary resource
+		actionModelsResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("gz", binaryResourceFactory);		
 		
 		File actionModelsDir = new File("target\\action-models\\");
 		actionModelsDir.mkdirs();
 		
-		File output = new File(actionModelsDir, "test.xmi");
+		File output = new File(actionModelsDir, "test.gz");
 		Resource actionModelResource = actionModelsResourceSet.createResource(URI.createFileURI(output.getAbsolutePath()));
 		Collection<Label> labels = testProcessor.createLabelsSupplier().call(progressMonitor, diagnosticConsumer);
 		for (Label label: labels) {
@@ -306,7 +343,16 @@ public class TestNatureModelDocGen {
 		
 		String siteMapDomain = "https://architecture.nasdanika.org";
 		
-		ActionSiteGenerator actionSiteGenerator = new ActionSiteGenerator();
+		ActionSiteGenerator actionSiteGenerator = new ActionSiteGenerator() {
+			
+			@Override
+			protected ResourceSet createResourceSet(Context context, ProgressMonitor progressMonitor) {
+				ResourceSet rs = super.createResourceSet(context, progressMonitor);
+				rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put("gz", binaryResourceFactory);
+				return rs;
+			};
+			
+		};
 		
 		Map<String, Collection<String>> errors = actionSiteGenerator.generate(rootActionURI, pageTemplateURI, siteMapDomain, new File("../docs"), new File("target/doc-site-work-dir"), true);
 				
