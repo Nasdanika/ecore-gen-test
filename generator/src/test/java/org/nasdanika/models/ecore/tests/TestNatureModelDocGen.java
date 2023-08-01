@@ -252,7 +252,7 @@ public class TestNatureModelDocGen {
 				Element element = re.getKey();
 				if (element instanceof EObjectNode) {
 					EObjectNode eObjNode = (EObjectNode) element;
-					EObject target = eObjNode.getTarget();
+					EObject target = eObjNode.get();
 					if (target == topLevelPackage) {
 						ProcessorInfo<Object> info = re.getValue();
 						Object processor = info.getProcessor();
@@ -316,7 +316,7 @@ public class TestNatureModelDocGen {
 		File actionModelsDir = new File("target\\action-models\\");
 		actionModelsDir.mkdirs();
 		
-		File output = new File(actionModelsDir, "test.gz");
+		File output = new File(actionModelsDir, "test.xmi");
 		Resource actionModelResource = actionModelsResourceSet.createResource(URI.createFileURI(output.getAbsolutePath()));
 		Collection<Label> labels = testProcessor.createLabelsSupplier().call(progressMonitor, diagnosticConsumer);
 		for (Label label: labels) {
@@ -331,7 +331,7 @@ public class TestNatureModelDocGen {
 				}
 			}
 		}
-		
+						
 		actionModelResource.getContents().addAll(labels);
 		actionModelResource.save(null);
 				
@@ -410,7 +410,7 @@ public class TestNatureModelDocGen {
 			@Override
 			protected String createVertex(Node node) {
 				if (node instanceof EClassNode) {
-					EClass eClass = ((EClassNode) node).getTarget();
+					EClass eClass = ((EClassNode) node).get();
 					return "["  + Thread.currentThread().getName() + "] " + eClass.getName() + "@" + eClass.getEPackage().getNsURI();
 				}
 				return null;
