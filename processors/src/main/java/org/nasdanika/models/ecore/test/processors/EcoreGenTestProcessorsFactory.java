@@ -16,8 +16,23 @@ import org.nasdanika.models.ecore.test.TestPackage;
 
 @EPackageNodeProcessorFactory(nsURI = TestPackage.eNS_URI)
 public class EcoreGenTestProcessorsFactory {
+
+	private Context context = Context.EMPTY_CONTEXT; // TODO - from constructor	
+
+	@Factory
+	public final AnimalProcessorsFactory animalProcessorsFactory;
+
+	@Factory
+	public final ColorProcessorsFactory colorProcessorsFactory;
+
+	@Factory
+	public final FoxProcessorsFactory foxProcessorsFactory;
 	
-	private Context context = Context.EMPTY_CONTEXT; // TODO - from constructor
+	public EcoreGenTestProcessorsFactory(Context context) {
+		animalProcessorsFactory = new AnimalProcessorsFactory(context);
+		colorProcessorsFactory = new ColorProcessorsFactory(context);
+		foxProcessorsFactory = new FoxProcessorsFactory(context);
+	}
 	
 	/**
 	 * Test of different ways to configure action prototype.
@@ -64,14 +79,5 @@ public class EcoreGenTestProcessorsFactory {
 			
 		};
 	}	
-
-	@Factory
-	public final AnimalProcessorsFactory animalProcessorsFactory = new AnimalProcessorsFactory(); // TODO - in constructor, context
-
-	@Factory
-	public final ColorProcessorsFactory colorProcessorsFactory = new ColorProcessorsFactory(); // TODO - in constructor, context
-
-	@Factory
-	public final FoxProcessorsFactory foxProcessorsFactory = new FoxProcessorsFactory(); // TODO - in constructor, context
 
 }

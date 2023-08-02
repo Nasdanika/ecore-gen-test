@@ -10,7 +10,7 @@ app-action:
         content:
           content-text: TODO  
         children:
-          - app-action-reference: "target/action-models/test.gz#/"
+          - app-action-reference: "target/action-models/test.xmi#/"
     - app-action:
         location: ${base-uri}search.html
         icon: fas fa-search

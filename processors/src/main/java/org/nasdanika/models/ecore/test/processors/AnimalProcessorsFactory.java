@@ -27,8 +27,11 @@ import org.nasdanika.models.ecore.test.TestPackage;
 
 @EClassifierNodeProcessorFactory(classifierID = TestPackage.ANIMAL)
 public class AnimalProcessorsFactory {
+	private Context context;
 	
-	private Context context = Context.EMPTY_CONTEXT; // TODO - from constructor
+	public AnimalProcessorsFactory(Context context) {
+		this.context = context;
+	}	
 		
 	/**
 	 * Test of different ways to configure action prototype.

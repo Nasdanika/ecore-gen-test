@@ -18,7 +18,11 @@ import org.nasdanika.models.ecore.test.TestPackage;
 @EClassifierNodeProcessorFactory(classifierID = TestPackage.COLOR)
 public class ColorProcessorsFactory {
 	
-	private Context context = Context.EMPTY_CONTEXT; // TODO - from constructor
+	private Context context;
+	
+	public ColorProcessorsFactory(Context context) {
+		this.context = context;
+	}
 		
 	/**
 	 * Test of different ways to configure action prototype.

@@ -33,12 +33,15 @@ import org.jgrapht.traverse.DepthFirstIterator;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.Diagnostic;
+import org.nasdanika.common.DiagramGenerator;
 import org.nasdanika.common.ExecutionException;
+import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.NasdanikaException;
 import org.nasdanika.common.NullProgressMonitor;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Transformer;
+import org.nasdanika.diagramgenerator.plantuml.PlantUMLDiagramGenerator;
 import org.nasdanika.exec.ExecPackage;
 import org.nasdanika.exec.content.ContentPackage;
 import org.nasdanika.exec.resources.ResourcesPackage;
@@ -215,10 +218,11 @@ public class TestNatureModelDocGen {
 		Transformer<Element,ProcessorConfig> processorConfigTransformer = new Transformer<>(configFactory);				
 		Map<Element, ProcessorConfig> configs = processorConfigTransformer.transform(graph.values(), false, progressMonitor);
 		
-		Context context = Context.EMPTY_CONTEXT;
+		MutableContext context = Context.EMPTY_CONTEXT.fork();
+		context.register(DiagramGenerator.class, new PlantUMLDiagramGenerator());
 		Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);
 		List<Function<URI,Action>> actionProviders = new ArrayList<>();		
-		EcoreGenTestProcessorsFactory ecoreGenTestProcessorFactory = new EcoreGenTestProcessorsFactory();		
+		EcoreGenTestProcessorsFactory ecoreGenTestProcessorFactory = new EcoreGenTestProcessorsFactory(context);		
 		EcoreNodeProcessorFactory ecoreNodeProcessorFactory = new EcoreNodeProcessorFactory(
 				context, 
 				(uri, pm) -> {
